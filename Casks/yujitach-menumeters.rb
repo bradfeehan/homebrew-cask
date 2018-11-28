@@ -1,15 +1,16 @@
 cask 'yujitach-menumeters' do
-  version '1.9.2'
-  sha256 'ab35bf334b863e589a85b24aef670e748289e7228a26aaca5bb3db72f1fb00d3'
+  version '1.9.7bis'
+  sha256 '6cf2f7b312c1c13f74e9d56082f48b50b7ca5909ee3589df916a65818ac390d9'
 
-  url "http://member.ipmu.jp/yuji.tachikawa/MenuMetersElCapitan/zips/MenuMeters_#{version}.zip"
-  name 'MenuMeters El Capitan Port'
-  homepage 'http://member.ipmu.jp/yuji.tachikawa/MenuMetersElCapitan/'
-  license :gpl
+  # github.com/yujitach/MenuMeters was verified as official when first introduced to the cask
+  url "https://github.com/yujitach/MenuMeters/releases/download/#{version}/MenuMeters_#{version.major_minor_patch}.zip"
+  appcast 'https://github.com/yujitach/MenuMeters/releases.atom'
+  name 'MenuMeters for El Capitan (and later)'
+  homepage 'https://member.ipmu.jp/yuji.tachikawa/MenuMetersElCapitan/'
 
   depends_on macos: '>= :el_capitan'
 
   prefpane 'MenuMeters.prefPane'
 
-  zap delete: '~/Library/Preferences/com.ragingmenace.MenuMeters.plist'
+  zap trash: '~/Library/Preferences/com.ragingmenace.MenuMeters.plist'
 end

@@ -1,12 +1,12 @@
 cask 'impactor' do
-  version '0.9.33'
-  sha256 '2f5e9278896b1a5d8c524dc24ff24b893cddb9d082951e17c4655c8327ba7c2d'
+  version '0.9.51'
+  sha256 'd8944ebc2726aa5281ff88d8fd5daa3a4ad32bc2fd4f1cc9cb700f7239cacdbf'
 
   # cache.saurik.com/impactor was verified as official when first introduced to the cask
   url "https://cache.saurik.com/impactor/mac/Impactor_#{version}.dmg"
+  appcast 'https://cydia.saurik.com/api/appcast/1'
   name 'Impactor'
   homepage 'http://www.cydiaimpactor.com/'
-  license :gratis
 
   app 'Impactor.app'
 end

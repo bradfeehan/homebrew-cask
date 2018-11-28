@@ -1,13 +1,12 @@
 cask 'porthole' do
-  version '1.7.9'
-  sha256 '805847cfec098073feabccd7f65f448c27c3db14574ac4a94b823458e525ebe3'
+  version '1.7.10'
+  sha256 '63b6d2a0a51a906413238770d1cd00180cc0105e210f44eb6131c2cbee298686'
 
-  url "https://download.getporthole.com/Porthole-v#{version}.zip"
-  appcast 'https://update.getporthole.com/appcast.rss',
-          checkpoint: 'a3602cb1b9271bafaa09b607760da032f2bedaa6315238a339ae22c607510197'
+  # getporthole.com was verified as official when first introduced to the cask
+  url 'https://download.getporthole.com/Porthole-latest.zip'
+  appcast 'https://update.getporthole.com/appcast.rss'
   name 'Porthole'
-  homepage 'http://getporthole.com/'
-  license :commercial
+  homepage 'https://www.dangercove.com/porthole/'
 
   app 'Porthole.app'
 end

@@ -1,11 +1,12 @@
 cask 'softraid' do
-  version '5.5.5'
-  sha256 '7060315cbb235fb029d5c3a122ef46df6d463fa8577224dc9e7b7327f6839513'
+  version '5.7.2'
+  sha256 'cadd8503ee90dcd5775ef75c9147155597f48517db43ff76c30721b66c8794c5'
 
   url "https://softraid.com/updates/SoftRAID%20#{version}.dmg"
+  appcast 'https://www.softraid.com/pages/support/download_latest_version.html'
   name 'SoftRAID'
   homepage 'https://www.softraid.com/'
-  license :commercial
 
   app "SoftRAID #{version}/SoftRAID #{version}.app"
+  app "SoftRAID #{version}/SoftRAID Easy Setup.app"
 end

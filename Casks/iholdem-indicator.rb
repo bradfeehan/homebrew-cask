@@ -1,11 +1,11 @@
 cask 'iholdem-indicator' do
-  version :latest
-  sha256 :no_check
+  version '6.3'
+  sha256 '3a47e6e9d121564bf25fae927797c11fd7fc8c963506383503127a39359cc6d1'
 
-  url 'https://www.iholdemindicator.com/download/iHoldemIndicatorInstaller.pkg'
+  url 'http://www.iholdemindicator.com/download/iHoldemIndicatorInstaller.pkg'
+  appcast 'http://www.iholdemindicator.com/download/sparklerv2.xml'
   name 'iHoldem Indicator'
-  homepage 'https://www.iholdemindicator.com'
-  license :commercial
+  homepage 'https://www.iholdemindicator.com/'
 
   pkg 'iHoldemIndicatorInstaller.pkg'
 
@@ -14,8 +14,7 @@ cask 'iholdem-indicator' do
                          'com.ckmn.iHoldemIndicator',
                          'com.ckmn.IndicatorHelper',
                        ],
-            pkgutil:   'iHoldemIndicatorInstaller',
-            delete:    '/Applications/iHoldemIndicator.app'
+            pkgutil:   'com.ckmn.iholdemIndicator.iHoldemIndicator.pkg'
 
-  zap delete: '~/Library/Application Support/iHoldemIndicator'
+  zap trash: '~/Library/Application Support/iHoldemIndicator'
 end

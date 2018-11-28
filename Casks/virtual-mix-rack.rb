@@ -1,15 +1,12 @@
 cask 'virtual-mix-rack' do
-  version '1.6.4.1'
-  sha256 '687eed5f1d7f09623ca6322a222178149c6a73d98fa794beaecc1a228d891e80'
+  version '2.1.2.1'
+  sha256 '9080bf387f7f4a63bbc0da20c6abf58508ea9813a4254ea95bd25f5ed98c8f6e'
 
   url "http://download.slatedigital.com/vmr/VMR_#{version.no_dots}_Mac.zip"
   name 'Slate Digital Virtual Mix Rack'
-  homepage 'http://www.slatedigital.com/products/virtual-mix-rack/'
-  license :commercial
+  homepage 'https://slatedigital.com/'
 
-  container nested: "VMR_#{version.no_dots}_Mac.dmg"
-
-  pkg 'Install Virtual Mix Rack.pkg'
+  pkg 'Install VMR Complete Bundle.pkg'
 
   uninstall script:  '/Applications/Slate Digital/Virtual Mix Rack/Uninstall.command',
             pkgutil: 'com.slatedigital.vmrcompletebundle*'

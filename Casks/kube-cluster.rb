@@ -1,15 +1,13 @@
 cask 'kube-cluster' do
-  version '0.5.1'
-  sha256 '7f046d043a2371a552cdc8ee37bd15518c764eecce65ab5647e3732898049d17'
+  version '0.5.3'
+  sha256 'a19384f36a215af485f6ca2761091feaf7b6e3825a4f19845bd627c82c4d4083'
 
   url "https://github.com/TheNewNormal/kube-cluster-osx/releases/download/v#{version}/Kube-Cluster_v#{version}.dmg"
-  appcast 'https://github.com/TheNewNormal/kube-cluster-osx/releases.atom',
-          checkpoint: 'cc48edd6ed762e3645dc73ff720a070af067ba12f6db91a15989c3eae3d33712'
+  appcast 'https://github.com/TheNewNormal/kube-cluster-osx/releases.atom'
   name 'Kube-Cluster'
   homepage 'https://github.com/TheNewNormal/kube-cluster-osx'
-  license :apache
 
   app 'Kube-Cluster.app'
 
-  zap delete: '~/kube-cluster'
+  zap trash: '~/kube-cluster'
 end

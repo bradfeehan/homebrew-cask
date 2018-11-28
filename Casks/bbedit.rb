@@ -1,17 +1,25 @@
 cask 'bbedit' do
-  version '11.6.2'
-  sha256 '49105c236bd09ec29ebfab45da46a45d3768e8382fa0eb706f65f407bee500b5'
-
-  url "http://pine.barebones.com/files/BBEdit_#{version}.dmg"
-  appcast 'https://versioncheck.barebones.com/BBEdit.xml',
-          checkpoint: 'd9edfc0950afd9b90d05323de99632714f93a077997fc7c13dca0cc93898bee1'
+  if MacOS.version <= :el_capitan
+    version '12.1.6'
+    sha256 '23b9fc6ef5c03cbcab041566503c556d5baf56b2ec18f551e6f0e9e6b48dc690'
+  else
+    version '12.5.1'
+    sha256 '92b59a759b04255cd4715e7d80f9053ca7d6c85f5c39a66d025fb71d0f30aee8'
+  end
+  # s3.amazonaws.com/BBSW-download was verified as official when first introduced to the cask
+  url "https://s3.amazonaws.com/BBSW-download/BBEdit_#{version}.dmg"
+  appcast 'https://versioncheck.barebones.com/BBEdit.xml'
   name 'BBEdit'
-  homepage 'http://www.barebones.com/products/bbedit/'
-  license :commercial
+  homepage 'https://www.barebones.com/products/bbedit/'
+
+  depends_on macos: '>= :el_capitan'
 
   app 'BBEdit.app'
 
-  postflight do
-    suppress_move_to_applications
-  end
+  zap trash: [
+               '~/Library/Application Support/BBEdit',
+               '~/Library/Preferences/com.barebones.bbedit.plist',
+               '~/Library/BBEdit',
+               '~/Library/Caches/com.barebones.bbedit',
+             ]
 end

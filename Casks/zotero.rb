@@ -1,13 +1,11 @@
 cask 'zotero' do
-  version '4.0.29.14'
-  sha256 '9af1d5149fc3dcdc7a836112b024e311b5e325a071f512e6db8f005678cd4df9'
+  version '5.0.58'
+  sha256 '3fc7ddf750acc772d7dab969bee87e7396b71b0d33e3df58732aa7cac74f0fb5'
 
-  url "https://download.zotero.org/standalone/#{version}/Zotero-#{version}.dmg"
-  appcast 'https://github.com/zotero/zotero/releases.atom',
-          checkpoint: '676bc665177ff8a48e2b0afc7563ab11560f0159590d770a224bcc50386a91fe'
+  url "https://download.zotero.org/client/release/#{version}/Zotero-#{version}.dmg"
+  appcast 'https://github.com/zotero/zotero/releases.atom'
   name 'Zotero'
   homepage 'https://www.zotero.org/'
-  license :affero
 
   auto_updates true
 

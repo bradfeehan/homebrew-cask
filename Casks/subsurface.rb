@@ -1,11 +1,10 @@
 cask 'subsurface' do
-  version '4.5.6'
-  sha256 '9c56465cbfcfe28b23d3c05a168d46c974731c06023a3dd9b08bae6a8b0ae50c'
+  version '4.8.4'
+  sha256 'cfeca3d917c99285c42fa6fb9bfd6f2725ce057450b8b26dbfe800278af50d2b'
 
   url "https://subsurface-divelog.org/downloads/Subsurface-#{version}.dmg"
   name 'Subsurface'
-  homepage 'https://subsurface-divelog.org'
-  license :gpl
+  homepage 'https://subsurface-divelog.org/'
 
   app 'Subsurface.app'
 end

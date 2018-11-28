@@ -1,18 +1,13 @@
 cask 'anki' do
-  if MacOS.version <= :snow_leopard
-    version '2.0.34.qt47'
-    sha256 '83b008ad8ebb20247a673de3e37908d96cbb8573e5257b826176f5649a4ef6b7'
-  else
-    version '2.0.36'
-    sha256 '4e229ace72b11b93186af31183ae365bb24c5f14d098b7c4bb564d16c3dfbc3c'
-  end
+  version '2.1.5'
+  sha256 'a239f97cb7ea052e8c58083e67c77d53c4610c1b838c6b5e8226caddddd24031'
 
-  url "http://ankisrs.net/download/mirror/anki-#{version}.dmg"
+  url "https://apps.ankiweb.net/downloads/current/anki-#{version}-mac.dmg"
+  appcast 'https://apps.ankiweb.net/docs/changes.html'
   name 'Anki'
-  homepage 'http://ankisrs.net/'
-  license :affero
+  homepage 'https://apps.ankiweb.net/'
 
-  depends_on arch: :intel
+  depends_on macos: '>= :yosemite'
 
   app 'Anki.app'
 end

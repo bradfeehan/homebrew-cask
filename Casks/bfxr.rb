@@ -4,8 +4,7 @@ cask 'bfxr' do
 
   url 'https://ded.bfxr.net/~locus/bfxr_update/Bfxr_MAC.zip'
   name 'Bfxr'
-  homepage 'http://www.bfxr.net/'
-  license :apache
+  homepage 'https://www.bfxr.net/'
 
   app 'Bfxr.app'
 end

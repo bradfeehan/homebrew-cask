@@ -11,13 +11,11 @@ cask 'seil' do
   end
 
   url "https://pqrs.org/osx/karabiner/files/Seil-#{version}.dmg"
-  appcast 'https://pqrs.org/osx/karabiner/files/seil-appcast.xml',
-          checkpoint: 'bf1be761638c151d1780c80db40ecb489899e055f4fdd3ddfa56b8f5692c3912'
+  appcast 'https://pqrs.org/osx/karabiner/files/seil-appcast.xml'
   name 'Seil'
   homepage 'https://pqrs.org/osx/karabiner/seil.html'
-  license :public_domain
 
-  depends_on macos: '>= :mountain_lion'
+  depends_on macos: '<= :el_capitan'
 
   if MacOS.version <= :mountain_lion
     pkg 'Seil.pkg'
@@ -29,10 +27,14 @@ cask 'seil' do
             kext:    'org.pqrs.driver.Seil',
             pkgutil: 'org.pqrs.driver.Seil'
 
-  zap       delete: [
-                      '~/Library/Caches/org.pqrs.PCKeyboardHack',
-                      '~/Library/Caches/org.pqrs.Seil',
-                      '~/Library/Preferences/org.pqrs.PCKeyboardHack.plist',
-                      '~/Library/Preferences/org.pqrs.Seil.plist',
-                    ]
+  zap trash: [
+               '~/Library/Caches/org.pqrs.PCKeyboardHack',
+               '~/Library/Caches/org.pqrs.Seil',
+               '~/Library/Preferences/org.pqrs.PCKeyboardHack.plist',
+               '~/Library/Preferences/org.pqrs.Seil.plist',
+             ]
+
+  caveats do
+    discontinued
+  end
 end

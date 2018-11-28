@@ -4,11 +4,9 @@ cask 'tagaini-jisho' do
 
   # github.com/Gnurou/tagainijisho was verified as official when first introduced to the cask
   url "https://github.com/Gnurou/tagainijisho/releases/download/#{version}/Tagaini.Jisho-#{version}.dmg"
-  appcast 'https://github.com/Gnurou/tagainijisho/releases.atom',
-          checkpoint: '155c918aab4ba9bdbe952eb766e1b94e0bfdd206824adc27a1576e186052affa'
+  appcast 'https://github.com/Gnurou/tagainijisho/releases.atom'
   name 'Tagaini Jisho'
-  homepage 'http://www.tagaini.net/'
-  license :gpl
+  homepage 'https://www.tagaini.net/'
 
   app 'Tagaini Jisho.app'
 end

@@ -4,9 +4,9 @@ cask 'on-the-job' do
 
   # stunt.s3.amazonaws.com was verified as official when first introduced to the cask
   url "https://stunt.s3.amazonaws.com/onthejob_#{version}.zip"
+  appcast 'https://stuntsoftware.com/PHP/sparkle/onthejob.php'
   name 'On The Job'
   homepage 'https://stuntsoftware.com/onthejob/'
-  license :commercial
 
   app 'On The Job.app'
 end

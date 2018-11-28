@@ -1,14 +1,12 @@
 cask 'jubler' do
-  version '5.0.5'
-  sha256 '363f272cc1e15e02cf3e28935b9b2fdd91c43b93b2d1afef281e500c158b8bcd'
+  version '6.0.2'
+  sha256 'd0d01cf027c745a2aaf3f88c1e00f003e1dacae8108564ebe8f158dfa8c2630c'
 
   # sourceforge.net/jubler was verified as official when first introduced to the cask
   url "https://downloads.sourceforge.net/jubler/Jubler-#{version}.dmg"
-  appcast 'https://sourceforge.net/projects/jubler/rss',
-          checkpoint: 'e53b10d79d2f486772e1293517212cdef19be67cf76244880dcba34d944343e3'
+  appcast 'https://sourceforge.net/projects/jubler/rss'
   name 'Jubler'
   homepage 'http://www.jubler.org/'
-  license :gpl
 
   app 'Jubler.app'
 

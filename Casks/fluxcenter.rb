@@ -1,12 +1,13 @@
 cask 'fluxcenter' do
-  version '1.1.15.43404'
-  sha256 '4d884fc23aa9b21959c63ba43009886bd618b38e817c1c121f1477961c22fde2'
+  version '1.2.16.47921'
+  sha256 'b5114d716950881732878d8a8cc1c027e47b57ea90d579afea6637ac89b87d14'
 
-  # files.flux.to was verified as official when first introduced to the cask
-  url "http://files.flux.to/files/Center/MacOS/Flux_FluxCenter_MacOSX_Installer_(#{version}).dmg"
+  url "https://www.flux.audio/wp-content/uploads/files/Center/MacOS/Flux_FluxCenter_MacOS_Installer_(#{version}).dmg"
+  appcast 'https://www.flux.audio/download/'
   name 'FluxCenter'
-  homepage 'http://www.fluxhome.com'
-  license :gratis
+  homepage 'https://www.flux.audio/'
+
+  depends_on macos: '>= :lion'
 
   app 'FluxCenter.app'
 end

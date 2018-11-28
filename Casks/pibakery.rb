@@ -1,16 +1,18 @@
 cask 'pibakery' do
-  version '0.2.3'
-  sha256 '655c01afafdd3012332ad3a68f0388f5f838cf826dc49b7d645b5b0928e01f50'
+  version '0.3.6'
+  sha256 'f449bfe01806e4c4b30a8603c60c439ce94b579f237c471ffc3057abcf507642'
 
   # github.com/davidferguson was verified as official when first introduced to the cask
   url "https://github.com/davidferguson/pibakery/releases/download/v#{version}/PiBakery.pkg"
-  appcast 'https://github.com/davidferguson/pibakery/releases.atom',
-          checkpoint: '32c4b18e7d1986179ac634944e4e5093267ad1e1ada80f6065a9384a966ea3eb'
+  appcast 'https://github.com/davidferguson/pibakery/releases.atom'
   name 'PiBakery'
-  homepage 'http://www.pibakery.org/'
-  license :gpl
+  homepage 'https://www.pibakery.org/'
 
   pkg 'PiBakery.pkg'
 
-  uninstall pkgutil: 'org.PiBakery.pkg.*'
+  uninstall pkgutil: [
+                       'org.pibakery.pibakery.pkg',
+                       'org.pibakery.raspbian-full.pkg',
+                       'org.pibakery.raspbian-lite.pkg',
+                     ]
 end

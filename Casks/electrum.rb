@@ -1,13 +1,18 @@
 cask 'electrum' do
-  version '2.7.0'
-  sha256 '8ac7a7c0844e43ff6e946049430d889051d775ebd4fa38ba520bef07f92b2c1e'
+  version '3.2.3'
+  sha256 '6f95797f73e0822fc37afd445981874ae61f231165f16440e521a4bcf4396758'
 
   url "https://download.electrum.org/#{version}/electrum-#{version}.dmg"
+  appcast 'https://github.com/spesmilo/electrum/releases.atom'
   name 'Electrum'
   homepage 'https://electrum.org/'
-  license :gpl
-  gpg "#{url}.asc",
-      key_id: '6694d8de7be8ee5631bed9502bd5824b7f9470e6'
 
   app 'Electrum.app'
+
+  zap trash: [
+               '~/.electrum',
+               '~/Library/Preferences/Electrum.plist',
+               '~/Library/Preferences/org.org.pythonmac.unspecified.Electrum.plist',
+               '~/Library/Saved Application State/Electrum.savedState',
+             ]
 end

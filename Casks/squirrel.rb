@@ -5,8 +5,7 @@ cask 'squirrel' do
   # dl.bintray.com/lotem/rime was verified as official when first introduced to the cask
   url "https://dl.bintray.com/lotem/rime/Squirrel-#{version}.zip"
   name 'Squirrel'
-  homepage 'http://rime.im/download/'
-  license :gpl
+  homepage 'https://rime.im/download/'
 
   depends_on macos: '>= :lion'
 
@@ -15,8 +14,8 @@ cask 'squirrel' do
   uninstall pkgutil: 'com.googlecode.rimeime.Squirrel.pkg',
             delete:  '/Library/Input Methods/Squirrel.app'
 
-  zap delete: [
-                '~/Library/Caches/com.googlecode.rimeime.inputmethod.Squirrel',
-                '~/Library/Preferences/com.googlecode.rimeime.inputmethod.Squirrel.plist',
-              ]
+  zap trash: [
+               '~/Library/Caches/com.googlecode.rimeime.inputmethod.Squirrel',
+               '~/Library/Preferences/com.googlecode.rimeime.inputmethod.Squirrel.plist',
+             ]
 end

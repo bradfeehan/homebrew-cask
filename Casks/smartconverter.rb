@@ -1,16 +1,15 @@
 cask 'smartconverter' do
-  version '2.2.3'
-  sha256 'a03f5e070547182e0d7e70f323962ec08efa2347b2f65664c9b1369e4feb067b'
+  version '2.4.0'
+  sha256 'a690f9da810723a6115cd7cc3e7e56b628f53cbd858158de85e4c8e52ae99cf5'
 
-  url "http://download.shedworx.com/smartconverter/SmartConverter-#{version}.dmg"
+  url "https://download.shedworx.com/smartconverter/SmartConverter-#{version}.dmg"
   name 'SmartConverter'
   homepage 'https://shedworx.com/smart-converter-pro'
-  license :commercial
 
   app 'SmartConverter.app'
 
-  zap delete: [
-                '~/Library/Containers/com.shedworx.smartconverter',
-                '~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.shedworx.smartconverter.sfl',
-              ]
+  zap trash: [
+               '~/Library/Containers/com.shedworx.smartconverter',
+               '~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.shedworx.smartconverter.sfl*',
+             ]
 end

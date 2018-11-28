@@ -2,11 +2,15 @@ cask 'ltspice' do
   version :latest
   sha256 :no_check
 
-  # ltspice.linear-tech.com was verified as official when first introduced to the cask
-  url 'http://ltspice.linear-tech.com/LTspiceIV.dmg'
+  url 'http://ltspice.analog.com/software/LTspiceIV.dmg'
   name 'LTspice'
-  homepage 'https://www.linear.com/designtools/software/'
-  license :unknown # TODO: change license and remove this comment; ':unknown' is a machine-generated placeholder
+  homepage 'http://www.analog.com/en/design-center/design-tools-and-calculators/ltspice-simulator.html'
 
   app 'LTspice.app'
+
+  zap trash: [
+               '~/Documents/LTspice/examples',
+               '~/Library/Application Support/LTspice',
+             ],
+      rmdir: '~/Documents/LTspice'
 end

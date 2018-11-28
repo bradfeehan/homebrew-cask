@@ -1,11 +1,10 @@
 cask 'mkvtools' do
-  version '3.6.0'
-  sha256 '441c31b720a7c9f39ca094003c5daac8c4f65ac9d1b1a9ca71ad06dd3c01ea5e'
+  version '3.7.1'
+  sha256 '0726c2816f1012565fe75eba410d553c97e64f607d85fcaa54b5d623965c9ab4'
 
   url "http://www.emmgunn.com/downloads/mkvtools#{version}.zip"
   name 'MKVtools'
-  homepage 'http://www.emmgunn.com/mkvtools/mkvtoolshome.html'
-  license :commercial
+  homepage 'http://www.emmgunn.com/mkvtools-home/'
 
   app "mkvtools#{version}/MKVtools.app"
 end

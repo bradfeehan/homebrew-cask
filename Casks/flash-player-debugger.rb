@@ -1,18 +1,17 @@
 cask 'flash-player-debugger' do
-  version '23.0.0.162'
-  sha256 'b53cf7711fed9e7a90d3fa24fcc571478cbce29467b46206cec153a29c449272'
+  version '31.0.0.153'
+  sha256 '2e65e339bb4de6537048c31d6b12c1aecf919b419fd3dc8503d68d86761f46c2'
 
-  # macromedia.com was verified as official when first introduced to the cask
-  url "https://fpdownload.macromedia.com/pub/flashplayer/updaters/#{version.major}/flashplayer_#{version.major}_sa_debug.dmg"
-  name 'Adobe Flash Player Debugger'
-  homepage 'https://www.adobe.com/support/flashplayer/downloads.html'
-  license :gratis
+  url "https://fpdownload.adobe.com/pub/flashplayer/updaters/#{version.major}/flashplayer_#{version.major}_sa_debug.dmg"
+  appcast 'https://fpdownload.adobe.com/pub/flashplayer/update/current/xml/version_en_mac_pep.xml'
+  name 'Adobe Flash Player projector content debugger'
+  homepage 'https://www.adobe.com/support/flashplayer/debug_downloads.html'
 
   # Renamed to avoid conflict with flash-player.
   app 'Flash Player.app', target: 'Flash Player Debugger.app'
 
-  zap delete: [
-                '~/Library/Caches/Adobe/Flash Player',
-                '~/Library/Logs/FlashPlayerInstallManager.log',
-              ]
+  zap trash: [
+               '~/Library/Caches/Adobe/Flash Player',
+               '~/Library/Logs/FlashPlayerInstallManager.log',
+             ]
 end

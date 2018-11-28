@@ -1,13 +1,11 @@
 cask 'join-together' do
-  version '7.6.2'
-  sha256 '81c94748d3cdb4fac88c82b8a4c1bcecda6bcb958e3bb3669f8861587d4e29fd'
+  version '7.8.3'
+  sha256 '09461af1b3c2252d04a1c00d4e0d108e164e3a079a16aeb19b8131dcbf7e9953'
 
   url "https://dougscripts.com/itunes/scrx/jointogether#{version.no_dots}.zip"
-  appcast 'https://dougscripts.com/itunes/itinfo/jointogether_appcast.xml',
-          checkpoint: 'd08e065f5b268046a65f3f46a0e5665312f340991da073c953d2962bf21794b9'
+  appcast 'https://dougscripts.com/itunes/itinfo/jointogether_appcast.xml'
   name 'Join Together'
   homepage 'https://dougscripts.com/apps/jointogetherapp.php'
-  license :commercial
 
   app 'Join Together.app'
 end

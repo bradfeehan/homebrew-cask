@@ -1,20 +1,18 @@
 cask 'sizeup' do
-  version '1.7.1'
-  sha256 'e722b4c96256fcea252a92c798d03a0927b2826a1d6752446ed4f4f20817743a'
+  version '1.7.4'
+  sha256 '5f2e9514627c0dc867ece0665fef790f01f3874d7765cc459e3a7676b78a02cf'
 
   url "https://www.irradiatedsoftware.com/downloads/SizeUp_#{version}.zip"
-  appcast 'https://www.irradiatedsoftware.com/updates/profiles/sizeup.php',
-          checkpoint: '72cab54bfab0d39660861fc45e691929faeaab312adc5f11d1368c28d40cc266'
+  appcast 'https://www.irradiatedsoftware.com/updates/profiles/sizeup.php'
   name 'SizeUp'
   homepage 'https://www.irradiatedsoftware.com/sizeup/'
-  license :commercial
 
-  accessibility_access true
+  auto_updates true
 
   app 'SizeUp.app'
 
-  zap delete: [
-                '~/Library/Preferences/com.irradiatedsoftware.SizeUp.plist',
-                '~/Library/Application Support/SizeUp',
-              ]
+  zap trash: [
+               '~/Library/Preferences/com.irradiatedsoftware.SizeUp.plist',
+               '~/Library/Application Support/SizeUp',
+             ]
 end

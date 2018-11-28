@@ -1,14 +1,11 @@
 cask 'gzdoom' do
-  version '0.6.0'
-  sha256 '4a64aeeb831dd7a5d919d8ccd3a17b051ebd456b043c034c77329beb3863c482'
+  version '3.6.0'
+  sha256 'd5d33724e80233a41de74279dc549d80e34f1089af444dcd4d4538070ccda280'
 
-  # github.com/alexey-lysiuk was verified as official when first introduced to the cask
-  url "https://github.com/alexey-lysiuk/gzdoom/releases/download/macOS-#{version}/GZDoom-macOS-#{version}.dmg"
-  appcast 'https://github.com/alexey-lysiuk/gzdoom/releases.atom',
-          checkpoint: 'fdf284e4bc993f222b95f4a8efbd114bb37b4b4423287de8a165941b8386d137'
+  url "https://zdoom.org/files/gzdoom/bin/gzdoom-bin-#{version.dots_to_hyphens}.dmg"
+  appcast 'https://github.com/coelckers/gzdoom/releases.atom'
   name 'gzdoom'
-  homepage 'https://alexey-lysiuk.github.io/gzdoom/'
-  license :oss
+  homepage 'https://zdoom.org/index'
 
   app 'GZDoom.app'
 end

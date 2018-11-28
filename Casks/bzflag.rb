@@ -1,13 +1,13 @@
 cask 'bzflag' do
-  version '2.4.6'
-  sha256 '718b520498294e0083dcff7faf277dcda8fa512a11bf2b852ffc7617f01bfb3e'
+  version '2.4.18'
+  sha256 '268151bebde80144c3fc6cb742e8024b822b3cf97e822e278cb4e2f546681e65'
 
-  url "https://download.bzflag.org/bzflag/osx/#{version}/BZFlag-#{version}-MacOSX.zip"
-  appcast 'https://github.com/BZFlag-Dev/bzflag/releases.atom',
-          checkpoint: 'f6f94afd10f51ff5510ceb84f4d04c707e5a74aa722f0443267d694c9a7c32c0'
+  url "https://download.bzflag.org/bzflag/macos/#{version}/BZFlag-#{version}-macOS.zip"
+  appcast 'https://github.com/BZFlag-Dev/bzflag/releases.atom'
   name 'BZFlag'
-  homepage 'https://bzflag.org/'
-  license :gpl
+  homepage 'https://www.bzflag.org/'
+
+  depends_on macos: '>= :lion'
 
   app "BZFlag-#{version}.app"
 end

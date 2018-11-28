@@ -1,18 +1,35 @@
 cask 'forklift' do
-  version '2.6.6'
-  sha256 '0fa2bb7927d07c0c13b964b517b500ea6a77a6a569becba3ea392b2f82c05fce'
+  version '3.2.9'
+  sha256 '26f4d09d91e118cd4ed3a878f9eb4f2723fe3a99d848c942bdac7d71d5fd3a7e'
 
-  url "http://download.binarynights.com/ForkLift#{version}.zip"
-  appcast 'http://update.binarynights.com/ForkLift2/update.xml',
-          checkpoint: '69e1f83deb9847553717f9edec621b7cdd93a918c13cef25804d44bb045788a9'
+  url "https://download.binarynights.com/ForkLift#{version}.zip"
+  appcast "https://updates.binarynights.com/ForkLift#{version.major}/update.xml"
   name 'ForkLift'
-  homepage 'http://www.binarynights.com/'
-  license :commercial
+  homepage 'https://binarynights.com/'
+
+  auto_updates true
+  depends_on macos: '>= :el_capitan'
 
   app 'ForkLift.app'
 
-  zap delete: [
-                '~/Library/Preferences/com.binarynights.ForkLift2.plist',
-                '~/Library/Caches/com.binarynights.ForkLift2',
-              ]
+  uninstall delete:    '/Library/PrivilegedHelperTools/com.binarynights.ForkLiftHelper',
+            launchctl: [
+                         'com.binarynights.ForkLiftHelper',
+                         'com.binarynights.ForkLiftMini',
+                       ],
+            quit:      [
+                         "com.binarynights.ForkLift-#{version.major}",
+                         'com.binarynights.ForkLiftMini',
+                       ]
+
+  zap trash: [
+               '~/Library/Application Support/ForkLift',
+               "~/Library/Caches/com.binarynights.ForkLift-#{version.major}",
+               "~/Library/Cookies/com.binarynights.ForkLift-#{version.major}.binarycookies",
+               '~/Library/Logs/ForkLift',
+               '~/Library/Logs/ForkLiftMini',
+               "~/Library/Preferences/com.binarynights.ForkLift-#{version.major}.plist",
+               '~/Library/Preferences/com.binarynights.ForkLiftMini.plist',
+               "~/Library/Saved Application State/com.binarynights.ForkLift-#{version.major}.savedState",
+             ]
 end

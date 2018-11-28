@@ -1,11 +1,10 @@
 cask 'garagesale' do
-  version '7.0.3'
-  sha256 '1d5fafe607455fbbc24666059f0d39559b072f5ee3e8dcd924b5d26d9a6b4a7d'
+  version '7.0.16'
+  sha256 '7e2bcf398121331a819e50970cf306486eb492c0078e8c1376233c232e021f87'
 
-  url "https://downloads.iwascoding.com/downloads/GarageSale_#{version}.zip"
+  url "https://downloads.iwascoding.com/downloads/GarageSale_#{version}.dmg"
   name 'GarageSale'
   homepage 'https://www.iwascoding.com/GarageSale/'
-  license :commercial
 
   app 'GarageSale.app'
 end

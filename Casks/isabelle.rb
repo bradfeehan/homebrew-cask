@@ -1,11 +1,11 @@
 cask 'isabelle' do
-  version '2016'
-  sha256 '3c9a3659d4f7b8f5429e2216efc0c7065288c7b8c7a0e0224450142619705c71'
+  version '2018'
+  sha256 '25278984f186eed5b2a47d5b536a2589c565d33aba2b1849c074425e9cde964b'
 
   url "https://www.cl.cam.ac.uk/research/hvg/Isabelle/dist/Isabelle#{version}.dmg"
+  appcast 'https://mirror.cse.unsw.edu.au/pub/isabelle/dist/'
   name 'Isabelle'
   homepage 'https://www.cl.cam.ac.uk/research/hvg/Isabelle/'
-  license :bsd
 
   app "Isabelle#{version}.app"
 end

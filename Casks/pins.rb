@@ -5,9 +5,8 @@ cask 'pins' do
   url 'http://pinsapp.com/download/Pins.dmg'
   name 'Pins'
   homepage 'http://pinsapp.com/'
-  license :commercial
 
   app 'Pins.app'
 
-  zap delete: '~/Library/Containers/com.pinsapp.pins'
+  zap trash: '~/Library/Containers/com.pinsapp.pins'
 end

@@ -4,13 +4,11 @@ cask 'vpaint' do
 
   # github.com/dalboris/vpaint was verified as official when first introduced to the cask
   url "https://github.com/dalboris/vpaint/releases/download/v#{version}/VPaint.#{version}.dmg"
-  appcast 'https://github.com/dalboris/vpaint/releases.atom',
-          checkpoint: '1acbd6f7b3b66e2e10fe2cc38a8a2051cd6d198e4a3593bfa2dc74d081dc009d'
+  appcast 'https://github.com/dalboris/vpaint/releases.atom'
   name 'VPaint'
   homepage 'https://www.vpaint.org/'
-  license :mit
 
   app 'vpaint.app'
 
-  zap delete: '~/.config/vpaint'
+  zap trash: '~/.config/vpaint'
 end

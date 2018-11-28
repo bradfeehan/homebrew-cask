@@ -1,13 +1,30 @@
 cask 'dingtalk' do
-  version '3.0.2'
-  sha256 '7e1446a7833db51aaed84f9a0fb677fad763115c755250caea61aa6992da2c9f'
+  version '4.5.15.11'
+  sha256 '42990c60ef826a5bb480fae6de20dc4cb0c733734f793399ffa283c1bd7426b9'
 
-  # alicdn.com/dingtalk-desktop was verified as official when first introduced to the cask
-  url "https://download.alicdn.com/dingtalk-desktop/Release/install/DingTalk_v#{version}.dmg"
+  # download.alicdn.com/dingtalk-desktop was verified as official when first introduced to the cask
+  url "https://download.alicdn.com/dingtalk-desktop/mac_dmg/Release/DingTalk_v#{version}.dmg"
+  appcast 'https://im.dingtalk.com/manifest/appcast_en.xml'
   name 'DingTalk'
   name '钉钉'
   homepage 'https://www.dingtalk.com/'
-  license :commercial
 
-  app '钉钉.app'
+  auto_updates true
+
+  app 'DingTalk.app'
+
+  uninstall quit: 'com.alibaba.DingTalkMac'
+
+  zap trash: [
+               '~/Library/Application Support/DingTalkMac',
+               '~/Library/Caches/DingTalk',
+               '~/Library/Caches/com.alibaba.DingTalkInstaller',
+               '~/Library/Caches/com.alibaba.DingTalkMac',
+               '~/Library/Preferences/com.dingtalk.mac.plist',
+               '~/Library/Preferences/com.alibaba.DingTalkMac.plist',
+               '~/Library/Preferences/com.alibaba.DingTalkInstaller.plist',
+               '~/Library/Preferences/com.alibaba.DingTalk-Helper.plist',
+               '~/Library/Saved Application State/com.alibaba.DingTalkMac.savedState',
+               '~/Library/WebKit/com.alibaba.DingTalkMac',
+             ]
 end

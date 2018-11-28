@@ -1,20 +1,23 @@
 cask 'dripcap' do
-  version '0.3.10'
-  sha256 'da431b636ba7fa7d5d286ccfac2a940e4c7a426f436fe9f17e140531e70c5274'
+  version '0.6.15'
+  sha256 'a89f2eea194e6736b7ae2fa7d8668149c87a1c1378848460a6030b5fed9d187b'
 
   # github.com/dripcap was verified as official when first introduced to the cask
   url "https://github.com/dripcap/dripcap/releases/download/v#{version}/dripcap-darwin-amd64.dmg"
-  appcast 'https://github.com/dripcap/dripcap/releases.atom',
-          checkpoint: 'eaf3729dcdc2a4e441028b803b20829963ef63b4809d0c753b148dd4f5bcf833'
+  appcast 'https://github.com/dripcap/dripcap/releases.atom'
   name 'Dripcap'
   homepage 'https://dripcap.org/'
-  license :mit
 
   app 'Dripcap.app'
 
-  uninstall launchctl: 'org.dripcap.DripcapHelper',
-            delete:    [
-                         '/Library/LaunchDaemons/org.dripcap.DripcapHelper.plist',
-                         '/Library/PrivilegedHelperTools/org.dripcap.DripcapHelper',
-                       ]
+  uninstall delete:    '/Library/PrivilegedHelperTools/org.dripcap.DripcapHelper',
+            launchctl: 'org.dripcap.DripcapHelper'
+
+  zap trash: [
+               '~/.dripcap',
+               '~/Library/Application Support/Dripcap',
+               '~/Library/Preferences/com.electron.dripcap.helper.plist',
+               '~/Library/Preferences/com.electron.dripcap.plist',
+               '~/Library/Saved Application State/com.electron.dripcap.savedState',
+             ]
 end

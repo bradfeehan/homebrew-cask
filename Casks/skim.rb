@@ -1,18 +1,24 @@
 cask 'skim' do
-  version '1.4.21'
-  sha256 '7680a2747a0c9a18fab1dfc84da22b7bf8afec8fad7fb0f58d8c16e23ea3bcba'
+  version '1.4.38'
+  sha256 '216b1264e601c3ab64a219e1728700ff702a29c91a1a49f6af80a415cbd0e8be'
 
+  # downloads.sourceforge.net/skim-app was verified as official when first introduced to the cask
   url "https://downloads.sourceforge.net/skim-app/Skim/Skim-#{version}/Skim-#{version}.dmg"
-  appcast 'http://skim-app.sourceforge.net/skim.xml',
-          checkpoint: 'f7b96848e0e58fdc65817e857852b2fd61564c5c64b587f83f56887fb31ff530'
+  appcast 'https://skim-app.sourceforge.io/skim.xml'
   name 'Skim'
-  homepage 'http://skim-app.sourceforge.net/'
-  license :bsd
+  homepage 'https://skim-app.sourceforge.io/'
+
+  auto_updates true
 
   app 'Skim.app'
   binary "#{appdir}/Skim.app/Contents/SharedSupport/displayline"
   binary "#{appdir}/Skim.app/Contents/SharedSupport/skimnotes"
   binary "#{appdir}/Skim.app/Contents/SharedSupport/skimpdf"
 
-  zap delete: '~/Library/Preferences/net.sourceforge.skim-app.skim.plist'
+  zap trash: [
+               '~/Library/Preferences/net.sourceforge.skim-app.skim.plist',
+               '~/Library/Preferences/net.sourceforge.skim-app.skim.bookmarks.plist',
+               '~/Library/Caches/net.sourceforge.skim-app.skim',
+               '~/Library/Cookies/net.sourceforge.skim-app.skim.binarycookies',
+             ]
 end

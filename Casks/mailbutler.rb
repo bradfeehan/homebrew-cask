@@ -1,14 +1,12 @@
 cask 'mailbutler' do
-  version '6476'
-  sha256 'caf33e04484b49b82633caa348904e12b383da5521b4e6f67bc99fe202f1108a'
+  version '2.2.1-10230'
+  sha256 'fcd6381ade07643f2a62222fbfc434b9395d15a09b1e3c538c78fc9d8ce7f5aa'
 
-  # mailbutler-io.s3.amazonaws.com was verified as official when first introduced to the cask
-  url "https://mailbutler-io.s3.amazonaws.com/files/MailButler_#{version}.zip"
-  appcast 'https://www.feingeist.io/fg-library/appcast.php?appName=MailButler',
-          checkpoint: '28df436c619b0fd0056da7d6521c59acb102a2b141f0800e97317c3f75facc77'
+  # mailbutler-data.s3.amazonaws.com was verified as official when first introduced to the cask
+  url "https://mailbutler-data.s3.amazonaws.com/downloads/Mailbutler_#{version}.zip"
+  appcast "https://www.mailbutler.io/appcast#{version.major}.php"
   name 'MailButler'
-  homepage 'https://www.feingeist.io/mailbutler/'
-  license :unknown # TODO: change license and remove this comment; ':unknown' is a machine-generated placeholder
+  homepage 'https://www.mailbutler.io/'
 
   app 'MailButler.app'
 end

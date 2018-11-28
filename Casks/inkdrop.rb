@@ -1,11 +1,20 @@
 cask 'inkdrop' do
-  version '0.11.0'
-  sha256 '23b47aa14a6531b3daf1ce96244b88255e43627a9b450b84220e1bfb70f095f5'
+  version '3.23.1'
+  sha256 '1f8334384f0596e40c93f0642b7dd1e01cbc9e0a443a03cbcfd4017e699b5652'
 
-  url "https://www.inkdrop.info/api/update/Inkdrop-#{version}-Mac.zip"
+  # d3ip0rje8grhnl.cloudfront.net was verified as official when first introduced to the cask
+  url "https://d3ip0rje8grhnl.cloudfront.net/v#{version}/Inkdrop-#{version}-Mac.zip"
+  appcast 'https://doc.inkdrop.info/releases'
   name 'Inkdrop'
-  homepage 'https://www.inkdrop.info'
-  license :closed
+  homepage 'https://www.inkdrop.info/'
 
-  app 'Inkdrop (Beta).app'
+  app 'Inkdrop.app'
+
+  zap trash: [
+               '~/Library/Application Support/inkdrop',
+               '~/Library/Saved Application State/info.pkpk.inkdrop.savedState',
+               '~/Library/Caches/info.pkpk.inkdrop',
+               '~/Library/Preferences/info.pkpk.inkdrop.plist',
+               '~/Library/Preferences/info.pkpk.inkdrop.helper.plist',
+             ]
 end

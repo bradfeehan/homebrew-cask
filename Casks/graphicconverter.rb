@@ -1,14 +1,15 @@
 cask 'graphicconverter' do
-  version '10.2589'
-  sha256 '48cd50854dade1d72e2ab7f08f37e496be214ba41ae92c0dbe5fd5b0d998d20c'
+  version '10.6.7,3273'
+  sha256 '2475427c01c220e65c504b86d0414cfca1f4e16db14981f58d96503d583d17bc'
 
   # lemkesoft.info was verified as official when first introduced to the cask
-  url "https://www.lemkesoft.info/files/graphicconverter/gc#{version.major}_build#{version.minor}.zip"
-  appcast "http://www.lemkesoft.org/files/graphicconverter/graphicconverter#{version.major}.xml",
-          checkpoint: '621f0918d123dd684b30e03995c383469a893408dc180aba7a760e87c0d1cf6f'
+  url "https://www.lemkesoft.info/files/graphicconverter/gc#{version.major}_build#{version.after_comma}.zip"
+  appcast "https://www.lemkesoft.info/sparkle/graphicconverter/graphicconverter#{version.major}.xml"
   name 'GraphicConverter'
   homepage 'https://www.lemkesoft.de/en/products/graphicconverter/'
-  license :commercial
+
+  auto_updates true
+  depends_on macos: '>= :mavericks'
 
   app "GraphicConverter #{version.major}.app"
 end

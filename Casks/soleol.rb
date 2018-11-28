@@ -2,10 +2,9 @@ cask 'soleol' do
   version :latest
   sha256 :no_check
 
-  url 'http://eduo.info/soleol-support/releases/SolEol-Mac.zip'
+  url 'https://eduo.info/soleol-support/releases/SolEol-Mac.zip'
   name 'SolEol'
-  homepage 'http://eduo.info/apps/soleol'
-  license :unknown # TODO: change license and remove this comment; ':unknown' is a machine-generated placeholder
+  homepage 'https://eduo.info/apps/soleol'
 
-  app 'SolEol/SolEol.app'
+  app 'SolEol.app'
 end

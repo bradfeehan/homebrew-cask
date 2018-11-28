@@ -1,13 +1,11 @@
 cask 'mandrake' do
-  version '3.0'
-  sha256 '42be0986d5ae47ffa10e27d5dea04d5fb519884deb1236d5bb8b36c62e899d77'
+  version '3.2'
+  sha256 'f828625c31d2f031bc00836e0e9e6a69d59e7f2aa9d480d4c459bc85e20ab191'
 
-  url "http://sveinbjorn.org/files/software/mandrake/ManDrake-#{version}.zip"
-  appcast 'http://sveinbjorn.org/files/appcasts/ManDrakeAppcast.xml',
-          checkpoint: '823a16ee9b605408873ddac7c801b6df98fd4cf847a6edbdbd89457d3072f433'
+  url "https://sveinbjorn.org/files/software/mandrake/ManDrake-#{version}.zip"
+  appcast 'https://sveinbjorn.org/files/appcasts/ManDrakeAppcast.xml'
   name 'ManDrake'
-  homepage 'http://sveinbjorn.org/mandrake'
-  license :bsd
+  homepage 'https://sveinbjorn.org/mandrake'
 
   app 'ManDrake.app'
 end

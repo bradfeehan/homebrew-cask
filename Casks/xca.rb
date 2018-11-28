@@ -1,13 +1,12 @@
 cask 'xca' do
-  version '1.3.2'
-  sha256 '8117821eef637c3fb78ce6e583fe0a3e667c714525e992b37d4d977a279a967e'
+  version '2.1.2'
+  sha256 '1cb7d23045ef64b2c30ce927a40d4bcae20b776aa0c94e067029b3b6be63bc49'
 
-  url "https://downloads.sourceforge.net/xca/xca/#{version}/xca-#{version}.dmg"
-  appcast 'https://sourceforge.net/projects/xca/rss?path=/xca',
-          checkpoint: '6d374c5779ca08e0c525c3314f71707b21906506a5c6b5558a01f5ad02ffbbbf'
+  # github.com/chris2511/xca was verified as official when first introduced to the cask
+  url "https://github.com/chris2511/xca/releases/download/RELEASE.#{version}/xca-#{version}.dmg"
+  appcast 'https://github.com/chris2511/xca/releases.atom'
   name 'XCA'
-  homepage 'http://xca.sourceforge.net/'
-  license :bsd
+  homepage 'https://hohnstaedt.de/xca/'
 
   app 'xca.app'
 end

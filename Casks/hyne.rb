@@ -1,19 +1,17 @@
 cask 'hyne' do
-  version '1.9.1'
-  sha256 'b71f9942a017b396a7f4e858ee1566ee50b0d7c1a9c560eecf723e161b9b0102'
+  version '1.9.3a'
+  sha256 '5cfaedb6f569eae6bfcc8b4c52ba09b24ddc3474f7c1e2b7222c4370ecdfe934'
 
-  url "https://github.com/myst6re/hyne/releases/download/#{version}/Hyne-#{version}-macos.zip"
-  appcast 'https://github.com/myst6re/hyne/releases.atom',
-          checkpoint: '66554e3611412debaf31ec9bba874b96b57d635b78a6b1d61c561c4db7e5ca72'
+  url "https://github.com/myst6re/hyne/releases/download/#{version}/hyne-#{version.sub(%r{[a-z]}, '')}-osx64.tar.gz"
+  appcast 'https://github.com/myst6re/hyne/releases.atom'
   name 'Hyne'
   homepage 'https://github.com/myst6re/hyne'
-  license :oss
 
-  app 'Hyne.app'
+  app "hyne-#{version}-osx64/Hyne.app"
 
-  zap delete: [
-                '~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.vin047.hyne.sfl',
-                '~/Library/Preferences/com.vin047.hyne.plist',
-                '~/Library/Saved Application State/com.vin047.hyne.savedState',
-              ]
+  zap trash: [
+               '~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.vin047.hyne.sfl*',
+               '~/Library/Preferences/com.vin047.hyne.plist',
+               '~/Library/Saved Application State/com.vin047.hyne.savedState',
+             ]
 end

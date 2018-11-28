@@ -1,14 +1,13 @@
 cask 'eclipse-rcp' do
-  version '4.6.0'
-  sha256 '5460e51dea3a58415f15cb59258aca067a95c958fb5a3e24b3bbf7a7fd7d616e'
+  version '4.7.3a,oxygen:3a'
+  sha256 '9aa9fa4d3f2e1e1b3776ea999276b82b1ff9179bf499da348ff9c16b9c503e60'
 
-  url 'https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/R/eclipse-rcp-neon-R-macosx-cocoa-x86_64.tar.gz&r=1'
+  url "https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/#{version.after_comma.before_colon}/#{version.after_colon}/eclipse-rcp-#{version.after_comma.before_colon}-#{version.after_colon}-macosx-cocoa-x86_64.dmg&r=1"
   name 'Eclipse for RCP and RAP Developers'
   homepage 'https://eclipse.org/'
-  license :eclipse
 
   depends_on macos: '>= :leopard'
-  depends_on arch: :x86_64
 
-  app 'Eclipse.app'
+  # Renamed to avoid conflict with other Eclipse.
+  app 'Eclipse.app', target: 'Eclipse RCP.app'
 end

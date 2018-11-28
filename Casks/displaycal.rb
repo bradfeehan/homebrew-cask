@@ -1,14 +1,12 @@
 cask 'displaycal' do
-  version '3.1.7.0'
-  sha256 '0c5f4252563d9bb411b17ec663905fb9b9b2349cf45f373f1ce745bdb350b020'
+  version '3.7.1.1'
+  sha256 '08f62b3492f169049339b251ea209f75398bbe960125fa8e2fefad9f6aaab119'
 
   # sourceforge.net/dispcalgui was verified as official when first introduced to the cask
   url "https://downloads.sourceforge.net/dispcalgui/release/#{version}/DisplayCAL-#{version}.dmg"
-  appcast 'https://sourceforge.net/projects/dispcalgui/rss?path=/release',
-          checkpoint: '10f7fca2eaaa03dd2c057937be3832dd8c4af22c7d03cd3698a9d9e2719ad971'
+  appcast 'https://sourceforge.net/projects/dispcalgui/rss?path=/release'
   name 'DisplayCAL'
-  homepage 'https://displaycal.net'
-  license :gpl
+  homepage 'https://displaycal.net/'
 
   depends_on formula: 'argyll-cms'
 
@@ -19,9 +17,9 @@ cask 'displaycal' do
     FileUtils.mv(staged_path.children, staged_path.join('DisplayCAL').tap(&:mkpath))
   end
 
-  zap delete: [
-                '~/Library/Application Support/dispcalGUI',
-                '~/Library/Logs/dispcalGUI',
-                '~/Library/Preferences/dispcalGUI',
-              ]
+  zap trash: [
+               '~/Library/Application Support/dispcalGUI',
+               '~/Library/Logs/dispcalGUI',
+               '~/Library/Preferences/dispcalGUI',
+             ]
 end

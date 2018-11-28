@@ -1,15 +1,15 @@
 cask 'tinymediamanager' do
-  version '2.8.1_ced2842'
-  sha256 '0b0f9e24372ace9cdfbfe5c5bce3b8fefa85f0ff2b71d01bc32b30aeb26186a6'
+  version '2.9.13_5cfe5d1'
+  sha256 'c3adf4e2d81189da62f16df76f202fd2bff8db8057452598972b1ef8296bc36e'
 
-  url "http://release.tinymediamanager.org/dist/tmm_#{version}_mac.zip"
+  url "https://release.tinymediamanager.org/dist/tmm_#{version}_mac.zip"
+  appcast 'https://release.tinymediamanager.org/'
   name 'tinyMediaManager'
   homepage 'https://www.tinymediamanager.org/'
-  license :apache
 
   app 'tinyMediaManager.app'
 
   caveats do
-    depends_on_java('7+')
+    depends_on_java '7+'
   end
 end

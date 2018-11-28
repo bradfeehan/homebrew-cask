@@ -1,28 +1,28 @@
 cask 'powershell' do
-  version '6.0.0-alpha.10'
-  sha256 '01a2b1ea27b3ee03ebd92e10d5106f0a6df912e1d5586feeb4a8b57faba11c00'
+  version '6.1.1'
+  sha256 'bcaa357fb472b688ecd3fc3472d360c1eb58e43afe9b083d7c8c76c36fded4b9'
 
-  # github.com/PowerShell/PowerShell was verified as official when first introduced to the cask
-  url "https://github.com/PowerShell/PowerShell/releases/download/v#{version}/powershell-#{version}.pkg"
-  appcast 'https://github.com/PowerShell/PowerShell/releases.atom',
-          checkpoint: '11d86f299b326db2ca34aa771a5576da5438c28d30dbcba22c85878bf57298de'
+  url "https://github.com/PowerShell/PowerShell/releases/download/v#{version}/powershell-#{version}-osx-x64.pkg"
+  appcast 'https://github.com/PowerShell/PowerShell/releases.atom'
   name 'PowerShell'
-  homepage 'https://msdn.microsoft.com/powershell'
-  license :oss
+  homepage 'https://github.com/PowerShell/PowerShell'
 
-  pkg "powershell-#{version}.pkg"
+  depends_on formula: 'openssl'
+  depends_on macos: '>= :sierra'
 
-  uninstall pkgutil: 'powershell'
+  pkg "powershell-#{version}-osx-x64.pkg"
 
-  zap delete: [
-                '~/.cache/powershell',
-                '~/.config/PowerShell',
-                '~/.local/share/powershell',
-              ],
-      rmdir:  [
-                '~/.cache',
-                '~/.config',
-                '~/.local/share',
-                '~/.local',
-              ]
+  uninstall pkgutil: 'com.microsoft.powershell'
+
+  zap trash: [
+               '~/.cache/powershell',
+               '~/.config/PowerShell',
+               '~/.local/share/powershell',
+             ],
+      rmdir: [
+               '~/.cache',
+               '~/.config',
+               '~/.local/share',
+               '~/.local',
+             ]
 end

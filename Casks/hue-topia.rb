@@ -2,10 +2,9 @@ cask 'hue-topia' do
   version :latest
   sha256 :no_check
 
-  url 'http://peacockmedia.software/mac/huetopia/huetopia.dmg'
+  url 'https://peacockmedia.software/mac/huetopia/huetopia.dmg'
   name 'Hue-topia'
-  homepage 'http://peacockmedia.software/mac/huetopia/'
-  license :commercial
+  homepage 'https://peacockmedia.software/mac/huetopia/'
 
   app 'Hue-topia.app'
 end

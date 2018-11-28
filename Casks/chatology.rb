@@ -1,13 +1,12 @@
 cask 'chatology' do
-  version '1.1'
-  sha256 'cf5e9bf958b9cb62e3e194578a43d8c2d9c7bcb3138f0205c3b421f111566c73'
+  version '1.2.2'
+  sha256 'b5175e5330ad26f6a43c6be078245ad3137aa80bf766a280573f9b7ef62eb139'
 
-  url "http://cdn.flexibits.com/Chatology_#{version}.zip"
-  appcast 'https://flexibits.com/chatology/appcast.php',
-          checkpoint: '8de7c950c0f46d3649bd3b0b78c1e787fa302e048da00b0dc384f9cb86821357'
+  # d60ism0l33mmr.cloudfront.net was verified as official when first introduced to the cask
+  url "https://d60ism0l33mmr.cloudfront.net/Chatology_#{version}.zip"
+  appcast 'https://flexibits.com/chatology/appcast.php'
   name 'Chatology'
   homepage 'https://flexibits.com/chatology'
-  license :commercial
 
   app 'Chatology.app'
 end

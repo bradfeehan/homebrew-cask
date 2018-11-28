@@ -8,16 +8,16 @@ cask 'istumbler' do
     sha256 '71f6a6b0e255a853664ed4900835a42f2d23dcb05de35acfb3ac2ec1c5fb2edc'
     url "https://istumbler.net/downloads/istumbler-#{version}.dmg"
   else
-    version '101'
-    sha256 'c59192f9a48ba0166f4c21e9d770214d051d67b4a4130fc4195154dea4943985'
+    version '103.40'
+    sha256 '9d0021cfb79b00d31d3551ec5f50c7439354d0bc449a14859b46956f6bb1a9fb'
     url "https://istumbler.net/downloads/istumbler-#{version}.dmg"
   end
 
-  appcast 'https://istumbler.net/feeds/appcast.rss',
-          checkpoint: '34a8b8cf15c866c8e7e3484b5eb894f178a68fb1dde20b47b6ce6d841f976403'
+  appcast 'https://istumbler.net/feeds/appcast.rss'
   name 'iStumbler'
   homepage 'https://istumbler.net/'
-  license :unknown # TODO: change license and remove this comment; ':unknown' is a machine-generated placeholder
+
+  auto_updates true
 
   app 'iStumbler.app'
 end

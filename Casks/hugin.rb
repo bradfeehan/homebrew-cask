@@ -1,13 +1,12 @@
 cask 'hugin' do
-  version '2016.2.0'
-  sha256 '31c36dc9d8116c34f5f208a98bf1711fbf8b37f20dd82058561aa59f48d9143c'
+  version '2018.0.0'
+  sha256 '286812bb95e34c2dd8458d49878c54d919e1c0f37ed042d174e8cf0c651edb3e'
 
+  # downloads.sourceforge.net/hugin was verified as official when first introduced to the cask
   url "https://downloads.sourceforge.net/hugin/Hugin-#{version}.dmg"
-  appcast 'https://sourceforge.net/projects/hugin/rss',
-          checkpoint: '00abe255c13acffec0368944669e30f1690daf513050bd4f71afb2d42a4fb490'
+  appcast 'https://sourceforge.net/projects/hugin/rss'
   name 'Hugin'
-  homepage 'http://hugin.sourceforge.net/'
-  license :gpl
+  homepage 'https://hugin.sourceforge.io/'
 
   suite 'Hugin'
 end

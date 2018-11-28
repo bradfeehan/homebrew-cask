@@ -5,18 +5,17 @@ cask 'heimdall-suite' do
   # bitbucket.org/benjamin_dobell/heimdall was verified as official when first introduced to the cask
   url "https://bitbucket.org/benjamin_dobell/heimdall/downloads/heimdall-suite-#{version}-mac.dmg"
   name 'Heimdall Suite'
-  homepage 'http://glassechidna.com.au/heimdall/'
-  license :mit
+  homepage 'https://glassechidna.com.au/heimdall/'
 
   pkg "Heimdall Suite #{version}.pkg"
 
   uninstall pkgutil: 'au.com.glassechidna.HeimdallSuite',
             kext:    'au.com.glassechidna.heimdall_usb_shield'
 
-  zap delete: [
-                '~/Library/Preferences/com.yourcompany.heimdall-frontend.plist',
-                '~/Library/Saved Application State/com.yourcompany.heimdall-frontend.savedState',
-              ]
+  zap trash: [
+               '~/Library/Preferences/com.yourcompany.heimdall-frontend.plist',
+               '~/Library/Saved Application State/com.yourcompany.heimdall-frontend.savedState',
+             ]
 
   caveats do
     reboot

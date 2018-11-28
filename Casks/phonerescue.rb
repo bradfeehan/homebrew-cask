@@ -2,10 +2,9 @@ cask 'phonerescue' do
   version :latest
   sha256 :no_check
 
-  url 'https://www.imobie.com/product/phonerescue-mac.dmg'
+  url 'https://dl.imobie.com/phonerescue-ios-mac.dmg'
   name 'PhoneRescue'
-  homepage 'https://www.imobie.com/phonerescue'
-  license :gratis
+  homepage 'https://www.imobie.com/phonerescue/'
 
   app 'PhoneRescue.app'
 end

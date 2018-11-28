@@ -1,13 +1,11 @@
 cask 'smart-scroll' do
-  version '4.2'
-  sha256 '5ebe15dd73b708770263bb9aae1e22702539aeeae269656f72410e563fcf7ca4'
+  version '4.4'
+  sha256 '744a697bd8ba73795a357763d86921d2e5ea6853e3da52f71bb6d520dc2fb72e'
 
   url 'https://www.marcmoini.com/SmartScroll.dmg'
+  appcast 'https://www.marcmoini.com/sxv_en.html'
   name 'Smart Scroll'
   homepage 'https://www.marcmoini.com/sx_en.html'
-  license :commercial
 
-  depends_on macos: '>= :snow_leopard'
-
-  prefpane "Smart Scroll #{version}.prefPane"
+  prefpane 'Smart Scroll.prefPane'
 end

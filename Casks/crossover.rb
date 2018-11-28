@@ -1,13 +1,11 @@
 cask 'crossover' do
-  version '15.3.1'
-  sha256 '5ac7a14a86ab409ea0b6791745de48399b96bb1042b0a346181fba9e2663bd49'
+  version '18.0.0'
+  sha256 '8e98856e56682362dcd5746873192736debdfbbe9e45b6f2430dffe694a8b192'
 
   url "https://media.codeweavers.com/pub/crossover/cxmac/demo/crossover-#{version}.zip"
-  appcast 'https://www.codeweavers.com/xml/versions/cxmac.xml',
-          checkpoint: '773a5bc5be3fef3c2c08927bbd052c4b3e0177e99e127eb76134717ff8f32213'
+  appcast 'https://www.codeweavers.com/xml/versions/cxmac.xml'
   name 'CrossOver'
   homepage 'https://www.codeweavers.com/products/crossover-mac/'
-  license :commercial
 
   app 'CrossOver.app'
 end

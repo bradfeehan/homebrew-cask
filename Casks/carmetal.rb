@@ -1,13 +1,11 @@
 cask 'carmetal' do
-  version :latest
-  sha256 :no_check
+  version '3.8.2'
+  sha256 'ca91624b708b50428d4390ae2c21176d689d73f5e432061fc8922f43bc4d33b3'
 
   url 'http://db-maths.nuxit.net/CaRMetal/download/carmetal.dmg'
-  appcast 'http://db-maths.nuxit.net/CaRMetal/telechargement_en.html',
-          checkpoint: '4caaf30e8385702176b6cb1358bdcb91187e3e5f9427b15f1fb661d2b13dd30f'
+  appcast 'http://db-maths.nuxit.net/CaRMetal/telechargement_en.html'
   name 'CaRMetal'
   homepage 'http://db-maths.nuxit.net/CaRMetal/index_en.html'
-  license :gpl
 
   app 'CaRMetal.app'
 end

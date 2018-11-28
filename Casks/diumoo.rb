@@ -1,14 +1,12 @@
 cask 'diumoo' do
-  version '1.5.0'
-  sha256 'f6a6628dab6c64752f6827e453368c18dcd06962ee0823d51d51c439cf7e04b6'
+  version '1.6.0beta'
+  sha256 '6747c250af4a3ad6ea022725b0183e968f4be3f0333130de55f5795095c3759a'
 
   # github.com/shanzi/diumoo was verified as official when first introduced to the cask
-  url "https://github.com/shanzi/diumoo/releases/download/v#{version}/diumoo.zip"
-  appcast 'https://github.com/shanzi/diumoo/releases.atom',
-          checkpoint: '3338de89c108cfa730279f37cf36779ba3e5cd088a2a62789259d01d9e6cf183'
+  url "https://github.com/shanzi/diumoo/releases/download/#{version}/diumoo.zip"
+  appcast 'https://github.com/shanzi/diumoo/releases.atom'
   name 'diumoo'
   homepage 'http://diumoo.net/'
-  license :gratis
 
   app 'diumoo.app'
 end

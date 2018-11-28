@@ -1,11 +1,12 @@
 cask 'manager' do
-  version '15.0.89'
-  sha256 'aeaf0d70a4f1f17ec908f9c51ae5275fc8b4c5a26b7de991b3625d9ec5ace22e'
+  version '18.11.50'
+  sha256 '8dedc4dc55f90abdf0418159860599668012d41fd6d87d5f9a2eab82367813a3'
 
-  url "http://cdn.manager.io/downloads/v#{version}/Manager.dmg"
+  # d2ap5zrlkavzl7.cloudfront.net was verified as official when first introduced to the cask
+  url "https://d2ap5zrlkavzl7.cloudfront.net/#{version}/Manager.dmg"
+  appcast 'https://www.manager.io/desktop/download/'
   name 'Manager'
-  homepage 'http://manager.io'
-  license :gratis
+  homepage 'https://www.manager.io/'
 
   app 'Manager.app'
 end

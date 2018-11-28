@@ -1,24 +1,23 @@
 cask 'coda' do
-  version '2.5.16'
-  sha256 '62c0e6d10ef24d4de9fc9a5c91304399ccf8422f9d81d8703ea9d98c453f29b7'
+  version '2.6.10'
+  sha256 '5f780a6a16548501dd5692265ca6eb10a04e7409cf9954b1660c9b62591480ad'
 
   url "https://download.panic.com/coda/Coda%20#{version}.zip"
+  appcast 'https://www.panic.com/updates/update.php?appName=Coda%202&appVersion=1'
   name 'Panic Coda'
   homepage 'https://panic.com/coda/'
-  license :commercial
 
+  auto_updates true
   depends_on macos: '>= :lion'
 
-  app 'Coda 2.app'
+  app "Coda #{version.major}.app"
 
-  zap delete: [
-                '~/Library/Application Support/Coda 2',
-                '~/Library/Application Support/Growl/Tickets/Coda 2.growlTicket',
-                '~/Library/Caches/com.panic.Coda2',
-                '~/Library/Caches/com.apple.helpd/Generated/com.panic.Coda2.help',
-                '~/Library/Preferences/com.panic.Coda2.plist',
-                '~/Library/Preferences/com.panic.Coda2.LSSharedFileList.plist',
-                '~/Library/Preferences/com.panic.Coda2.LSSharedFileList.plist.lockfile',
-                '~/Library/Saved Application State/com.panic.Coda2.savedState',
-              ]
+  zap trash: [
+               "~/Library/Application Support/Coda #{version.major}",
+               '~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.panic.coda2.sfl*',
+               "~/Library/Caches/com.apple.helpd/Generated/com.panic.Coda#{version.major}.help*",
+               "~/Library/Caches/com.panic.Coda#{version.major}",
+               "~/Library/Preferences/com.panic.Coda#{version.major}.plist",
+               "~/Library/Saved Application State/com.panic.Coda#{version.major}.savedState",
+             ]
 end

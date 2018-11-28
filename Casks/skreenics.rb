@@ -4,9 +4,9 @@ cask 'skreenics' do
 
   # googleapis.com/google-code-archive-downloads/v2/code.google.com/skreenics was verified as official when first introduced to the cask
   url "https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/skreenics/Screeniks-#{version}.zip"
+  appcast 'https://code.google.com/archive/p/skreenics/downloads'
   name 'Skreenics'
   homepage 'https://code.google.com/archive/p/skreenics/'
-  license :oss
 
   app 'Skreenics.app'
 

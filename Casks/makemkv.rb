@@ -1,18 +1,16 @@
 cask 'makemkv' do
-  version '1.10.2'
-  sha256 'cb2dd115242e2ab0c11aa1e167aa44337094410a621855326c90f6b5dd6f40c7'
+  version '1.14.1'
+  sha256 '13c5172b627d8f89041f59824293a8c978bf9a3e2798ec37f70273cbc2b6aa94'
 
   url "https://www.makemkv.com/download/makemkv_v#{version}_osx.dmg"
+  appcast 'https://www.makemkv.com/download/'
   name 'MakeMKV'
   homepage 'https://www.makemkv.com/'
-  license :freemium
-
-  depends_on macos: '>= :snow_leopard'
 
   app 'MakeMKV.app'
 
-  zap delete: [
-                '~/Library/Preferences/com.makemkv.MakeMKV.plist',
-                '~/Library/Saved Application State/com.makemkv.MakeMKV.savedState',
-              ]
+  zap trash: [
+               '~/Library/Preferences/com.makemkv.MakeMKV.plist',
+               '~/Library/Saved Application State/com.makemkv.MakeMKV.savedState',
+             ]
 end

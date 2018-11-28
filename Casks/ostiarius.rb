@@ -4,13 +4,19 @@ cask 'ostiarius' do
 
   # bitbucket.org/objective-see was verified as official when first introduced to the cask
   url "https://bitbucket.org/objective-see/deploy/downloads/Ostiarius_#{version}.zip"
+  appcast 'https://objective-see.com/products/changelogs/Ostiarius.txt'
   name 'Ostiarius'
   homepage 'https://objective-see.com/products/ostiarius.html'
-  license :unknown # TODO: change license and remove this comment; ':unknown' is a machine-generated placeholder
+
+  depends_on macos: '<= :el_capitan'
 
   app 'Ostiarius.app'
 
   uninstall quit:   'com.objectiveSee.Ostiarius',
             kext:   'com.objective-see.OstiariusKext',
-            delete: '~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.objectivesee.ostiarius.sfl'
+            delete: '~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.objectivesee.ostiarius.sfl*'
+
+  caveats do
+    discontinued
+  end
 end

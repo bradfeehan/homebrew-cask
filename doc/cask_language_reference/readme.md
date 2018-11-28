@@ -12,20 +12,15 @@ cask 'alfred' do
   url "https://cachefly.alfredapp.com/Alfred_#{version}.zip"
   name 'Alfred'
   homepage 'https://www.alfredapp.com/'
-  license :freemium
 
   app 'Alfred 2.app'
   app 'Alfred 2.app/Contents/Preferences/Alfred Preferences.app'
-
-  postflight do
-    suppress_move_to_applications key: 'suppressMoveToApplications'
-  end
 end
 ```
 
 ## The Cask Language Is Declarative
 
-Each Cask contains a series of stanzas (or “fields”) which *declare* how the software is to be obtained and installed. In a declarative language, the author does not need to worry about **order**. As long as all the needed fields are present, Homebrew-Cask will figure out what needs to be done at install time.
+Each Cask contains a series of stanzas (or “fields”) which *declare* how the software is to be obtained and installed. In a declarative language, the author does not need to worry about **order**. As long as all the needed fields are present, Homebrew Cask will figure out what needs to be done at install time.
 
 To make maintenance easier, the most-frequently-updated stanzas are usually placed at the top. But that’s a convention, not a rule.
 
@@ -40,7 +35,7 @@ Tests on the following values are known to be acceptable:
 
 | value                       | examples
 | ----------------------------|--------------------------------------
-| `MacOS.version`             | [macports.rb](https://github.com/caskroom/homebrew-cask/blob/9eae0af0daf9b55f81a3af010cca3b0b1272e2db/Casks/macports.rb#L4#L20), [coconutbattery.rb](https://github.com/caskroom/homebrew-cask/blob/2c801af44be29fff7f3cb2996455fce5dd95d1cc/Casks/coconutbattery.rb#L3#L17)
+| `MacOS.version`             | [coconutbattery.rb](https://github.com/Homebrew/homebrew-cask/blob/a11ee55e8ed8255f7dab77120dfb1fb955789559/Casks/coconutbattery.rb#L2-L16), [yasu.rb](https://github.com/Homebrew/homebrew-cask/blob/21d3f7ac8a4adac0fe474b3d4b020d284eeef88d/Casks/yasu.rb#L2-L23)
 
 ### Version Comparisons
 
@@ -55,11 +50,11 @@ if MacOS.version <= :mavericks     # symbolic name
 if MacOS.version <= '10.9'         # version string
 ```
 
-The available symbols for macOS versions are: `:cheetah`, `:puma`, `:jaguar`, `:panther`, `:tiger`, `:leopard`, `:snow_leopard`, `:lion`, `:mountain_lion`, `:mavericks`, `:yosemite`, `:el_capitan`, and `:sierra`. The corresponding numeric version strings should be given as major releases containing a single dot.
+The available symbols for macOS versions are: `:cheetah`, `:puma`, `:jaguar`, `:panther`, `:tiger`, `:leopard`, `:snow_leopard`, `:lion`, `:mountain_lion`, `:mavericks`, `:yosemite`, `:el_capitan`, `:sierra`, `:high_sierra`, and `:mojave`. The corresponding numeric version strings should be given as major releases containing a single dot.
 
 ### Always Fall Through to the Newest Case
 
-Conditionals should be constructed so that the default is the newest OS version. When using an `if` statement, test for older versions, and then let the `else` statement hold the latest and greatest. This makes it more likely that the Cask will work without alteration when a new OS is released. Example (from [coconutbattery.rb](https://github.com/caskroom/homebrew-cask/blob/2c801af44be29fff7f3cb2996455fce5dd95d1cc/Casks/coconutbattery.rb)):
+Conditionals should be constructed so that the default is the newest OS version. When using an `if` statement, test for older versions, and then let the `else` statement hold the latest and greatest. This makes it more likely that the Cask will work without alteration when a new OS is released. Example (from [coconutbattery.rb](https://github.com/Homebrew/homebrew-cask/blob/2c801af44be29fff7f3cb2996455fce5dd95d1cc/Casks/coconutbattery.rb)):
 
 ```ruby
 if MacOS.version <= :tiger
@@ -70,6 +65,11 @@ else
   # ...
 end
 ```
+
+### Switch Between Languages or Regions
+
+If a cask is available in multiple languages, you can use the `language` stanza to switch between languages or regions based on the system locale.
+
 
 ## Arbitrary Ruby Methods
 
@@ -86,7 +86,6 @@ cask 'myapp' do
   name 'MyApp'
   version '1.0'
   sha256 'a32565cdb1673f4071593d4cc9e1c26bc884218b62fef8abc450daa47ba8fa92'
-  license :unknown
 
   url "https://#{Utils.arbitrary_method}"
   homepage 'https://www.example.com/'
@@ -96,7 +95,7 @@ end
 
 This should be used sparingly: any method which is needed by two or more Casks should instead be rolled into the core. Care must also be taken that such methods be very efficient.
 
-Variables and methods should not be defined outside the `Utils` namespace, as they may collide with Homebrew-Cask internals.
+Variables and methods should not be defined outside the `Utils` namespace, as they may collide with Homebrew Cask internals.
 
 ## Header Line Details
 
@@ -109,8 +108,6 @@ cask '<cask-token>' do
 [`<cask-token>`](token_reference.md) should match the Cask filename, without the `.rb` extension,
 enclosed in single quotes.
 
-The header line is not entirely strict Ruby: no comma is required after the Cask token.
-
 There are currently some arbitrary limitations on Cask tokens which are in the process of being removed. The Travis bot will catch any errors during the transition.
 
 
@@ -122,16 +119,14 @@ Having a common order for stanzas makes Casks easier to update and parse. Below 
 version
 sha256
 
+language
+
 url
-appcast,
-  checkpoint: # shown here as it is required with `appcast`
+appcast
 name
 homepage
-license
-gpg, key_id: # on same line, since first part is typically small
 
 auto_updates
-accessibility_access
 conflicts_with
 depends_on
 container
@@ -142,6 +137,7 @@ pkg
 installer
 binary
 colorpicker
+dictionary
 font
 input_method
 internet_plugin
@@ -152,7 +148,7 @@ service
 audio_unit_plugin
 vst_plugin
 vst3_plugin
-artifact, target: # :target shown here as is required with `artifact`
+artifact, target: # target: shown here as is required with `artifact`
 stage_only
 
 preflight
@@ -170,4 +166,4 @@ zap
 caveats
 ```
 
-Note that every stanza that has additional parameters (`:symbols` after a `,`) shall have them on separate lines, one per line, in alphabetical order. Exceptions are `gpg` and `target:` (when not applied to `url`) which typically consist of short lines.
+Note that every stanza that has additional parameters (`:symbols` after a `,`) shall have them on separate lines, one per line, in alphabetical order. An exception is `target:` which typically consists of short lines.

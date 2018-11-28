@@ -12,15 +12,11 @@ cask 'rowanj-gitx' do
 
   # github.com/rowanj/gitx was verified as official when first introduced to the cask
   url "https://github.com/rowanj/gitx/releases/download/builds/#{version.major_minor}/#{version.patch}/GitX-dev-#{version.patch}.dmg"
-  appcast 'https://github.com/rowanj/gitx/releases.atom',
-          checkpoint: 'b1e11ef3e13e74f84a51bfd6169db61f9c37fe5df851bb8c5f131c1981f8fdc0'
+  appcast 'https://github.com/rowanj/gitx/releases.atom'
   name 'GitX-dev'
   homepage 'https://rowanj.github.io/gitx/'
-  license :gpl
 
   conflicts_with cask: 'gitx'
-  depends_on macos: '>= :snow_leopard'
-  depends_on arch: :intel
 
   app 'GitX.app'
   binary "#{appdir}/GitX.app/Contents/Resources/gitx"

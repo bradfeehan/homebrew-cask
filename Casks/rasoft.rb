@@ -1,11 +1,15 @@
 cask 'rasoft' do
-  version '3.6'
-  sha256 'a285edb402ea394b1044f441236751403dae6399d46c455833f658af18a287ec'
+  version '3.8.62'
+  sha256 '6a17d2a1bfe6a77b30621b295d8a8918492916450867214cd0fe495819868a1d'
 
-  url "https://www.rakocontrols.com/rasoftx/release/Rasoft%20Pro-#{version}.dmg"
+  url "https://rasoftx.rakocontrols.com/rasoftx/development/Rasoft%20Pro-#{version}.dmg"
+  appcast 'https://www.rakocontrols.com/support/software/'
   name 'Rasoft Pro'
-  homepage 'https://rakocontrols.com/useful-information/rasoftpro/'
-  license :unknown # TODO: change license and remove this comment; ':unknown' is a machine-generated placeholder
+  homepage 'https://www.rakocontrols.com/support/software/'
 
   app 'Rasoft Pro.app'
+
+  uninstall_preflight do
+    set_permissions "#{appdir}/Rasoft Pro.app", '0777'
+  end
 end

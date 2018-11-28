@@ -4,11 +4,15 @@ cask 'dogecoin' do
 
   # github.com/dogecoin/dogecoin was verified as official when first introduced to the cask
   url "https://github.com/dogecoin/dogecoin/releases/download/v#{version}/dogecoin-#{version}-osx-signed.dmg"
-  appcast 'https://github.com/dogecoin/dogecoin/releases.atom',
-          checkpoint: '3d22468ec5e9fe768efce8293cb1af298a6332ee4e1018768257418a64f99f0b'
+  appcast 'https://github.com/dogecoin/dogecoin/releases.atom'
   name 'Dogecoin'
-  homepage 'http://dogecoin.com/'
-  license :mit
+  homepage 'https://dogecoin.com/'
 
   app 'Dogecoin-Qt.app'
+
+  preflight do
+    set_permissions "#{staged_path}/Dogecoin-Qt.app", '0755'
+  end
+
+  zap trash: '~/Library/com.dogecoin.Dogecoin-Qt.plist'
 end

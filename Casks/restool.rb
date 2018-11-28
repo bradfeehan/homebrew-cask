@@ -4,11 +4,9 @@ cask 'restool' do
 
   # github.com/Nikola-K/RESTool was verified as official when first introduced to the cask
   url "https://github.com/Nikola-K/RESTool/releases/download/v#{version}/RESTool_#{version}_osx.zip"
-  appcast 'https://github.com/Nikola-K/RESTool/releases.atom',
-          checkpoint: 'a6287fdb9b482425d972a87911fcbe7a80bc6097b15ccca065f9a3daf60d74e7'
+  appcast 'https://github.com/Nikola-K/RESTool/releases.atom'
   name 'RESTool'
   homepage 'https://nikola-k.github.io/RESTool/'
-  license :apache
 
   app 'RESTool.app'
 end

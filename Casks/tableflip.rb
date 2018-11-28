@@ -1,14 +1,12 @@
 cask 'tableflip' do
-  version '1.0.2'
-  sha256 '4178b77fb8b458560a191320e6009d1ac3c3e32eac95c0a2b05774edf0fcfaac'
+  version '1.1.8'
+  sha256 '0e1e735c90c36ea7e595a915ad974975879785dc79383e0386f866ceb67a5bef'
 
   # s3.amazonaws.com/tableflip was verified as official when first introduced to the cask
   url "https://s3.amazonaws.com/tableflip/TableFlip-v#{version}.zip"
-  appcast 'https://update.christiantietze.de/tableflip/v1/release.xml',
-          checkpoint: '75935eb49c8ba7bde902f3bb7d10d94b80154143f880059d0844ee421c7d09c6'
+  appcast "https://update.christiantietze.de/tableflip/v#{version.major}/release.xml"
   name 'TableFlip'
-  homepage 'http://tableflipapp.com'
-  license :commercial
+  homepage 'https://tableflipapp.com/'
 
   auto_updates true
 

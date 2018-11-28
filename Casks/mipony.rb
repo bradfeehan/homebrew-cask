@@ -2,12 +2,11 @@ cask 'mipony' do
   version :latest
   sha256 :no_check
 
-  url 'http://www.mipony.net/downloadmac/'
+  url 'https://download.mipony.net/downloads/mac/Mipony-Installer.dmg'
   name 'Mipony'
-  homepage 'http://www.mipony.net/'
-  license :unknown # TODO: change license and remove this comment; ':unknown' is a machine-generated placeholder
+  homepage 'https://www.mipony.net/en/'
 
-  pkg 'Mipony-Installer.pkg', allow_untrusted: true
+  pkg 'Mipony-Installer.pkg'
 
   uninstall pkgutil: 'net.installer.mipony.*'
 end

@@ -3,13 +3,16 @@ cask 'ckb' do
   sha256 '724f7ee9a0e363304bc2b0b82713582bf366a07f2e4c4639389bb6f7efb7ebbf'
 
   url "https://github.com/ccMSC/ckb/releases/download/v#{version}/ckb.pkg"
-  appcast 'https://github.com/ccMSC/ckb/releases.atom',
-          checkpoint: 'e78446bd6ad2ad006934a73a1165dbce61e7d99b3a6da6537dff6abe7de16e3d'
+  appcast 'https://github.com/ccMSC/ckb/releases.atom'
   name 'ckb'
   homepage 'https://github.com/ccMSC/ckb'
-  license :gpl
 
   pkg 'ckb.pkg'
 
-  uninstall pkgutil: 'com.ckb.ckb'
+  uninstall pkgutil:   'com.ckb.ckb',
+            launchctl: 'com.ckb.daemon'
+
+  caveats do
+    discontinued
+  end
 end

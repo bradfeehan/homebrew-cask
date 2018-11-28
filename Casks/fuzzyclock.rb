@@ -4,8 +4,7 @@ cask 'fuzzyclock' do
 
   url 'https://mschmidt.me/macOS/FuzzyClock.zip'
   name 'FuzzyClock'
-  homepage 'https://mschmidt.me/osx.html'
-  license :bsd
+  homepage 'https://mschmidt.me/macos.html'
 
   app 'FuzzyClock.app'
 end

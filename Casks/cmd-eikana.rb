@@ -1,16 +1,14 @@
 cask 'cmd-eikana' do
-  version '2.0.1'
-  sha256 '5419633d75ac9697820e5ef4c3db4b311a4320f02056b42076f996c063fe9c26'
+  version '2.2.3'
+  sha256 '8e4157304ae21566339e956423632d34aacd12c96e87f35ffc83bf2304ff9be4'
 
   url "https://github.com/iMasanari/cmd-eikana/releases/download/v#{version}/eikana-#{version}.app.zip"
-  appcast 'https://github.com/iMasanari/cmd-eikana/releases.atom',
-          checkpoint: '28dad6cb69e5960fe5d4730981ae2e7769ef0d1b59bbe46e72bddcfaf7308370'
+  appcast 'https://github.com/iMasanari/cmd-eikana/releases.atom'
   name 'cmd-eikana'
   name '⌘英かな'
   homepage 'https://github.com/iMasanari/cmd-eikana'
-  license :mit
 
   app '⌘英かな.app'
 
-  zap delete: '~/Library/Preferences/io.github.imasanari.cmd-eikana.plist'
+  zap trash: '~/Library/Preferences/io.github.imasanari.cmd-eikana.plist'
 end

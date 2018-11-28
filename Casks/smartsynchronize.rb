@@ -1,18 +1,13 @@
 cask 'smartsynchronize' do
-  version '3.4.7'
-  sha256 'c1ef9876e480c3e9943b0993e46d211deb485e01f9b564dc54395d3783e841c4'
+  version '3.5.0'
+  sha256 'b590f3ff92bc3f2474ed3356029a2b63903a2badfa0a8b362d1bf38cec943dee'
 
   url "https://www.syntevo.com/downloads/smartsynchronize/smartsynchronize-macosx-#{version.dots_to_underscores}.dmg"
   name 'SmartSynchronize'
   homepage 'https://www.syntevo.com/smartsynchronize/'
-  license :commercial
 
   depends_on macos: '>= :lion'
 
   app 'SmartSynchronize.app'
   binary "#{appdir}/SmartSynchronize.app/Contents/MacOS/SmartSynchronize"
-
-  caveats do
-    files_in_usr_local
-  end
 end

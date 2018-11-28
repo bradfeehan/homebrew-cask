@@ -1,11 +1,12 @@
 cask 'frostwire' do
-  version '5.7.2'
-  sha256 'c559d214576684a97cee0bea15c91caf8dd2c3609cc498039813724ea475642e'
+  version '6.7.4'
+  sha256 '3e762e5c4af5e93e16d81c51b4a790bda52cc4e53cee2bd207cbeeced38eb980'
 
-  url "http://dl.frostwire.com/frostwire/#{version}/frostwire-#{version}.dmg"
+  # downloads.sourceforge.net/frostwire was verified as official when first introduced to the cask
+  url "https://downloads.sourceforge.net/frostwire/frostwire-#{version.before_comma}.dmg"
+  appcast 'https://sourceforge.net/projects/frostwire/rss'
   name 'FrostWire'
-  homepage 'http://www.frostwire.com'
-  license :gpl
+  homepage 'https://www.frostwire.com/'
 
   app 'FrostWire.app'
 end

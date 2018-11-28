@@ -1,11 +1,11 @@
 cask 'racket' do
-  version '6.6'
-  sha256 '95f2ca4c39b70cfd02324f0668a377a9c176f297f046842ed3c227cd7e388778'
+  version '7.1'
+  sha256 'd34260468e51067ff33503661cc2727cb92457c7be1b6358f5469af2c8bb98ab'
 
-  url "https://mirror.racket-lang.org/releases/#{version}/installers/racket-#{version}-x86_64-macosx.dmg"
+  url "https://mirror.racket-lang.org/installers/#{version}/racket-#{version}-x86_64-macosx.dmg"
+  appcast 'https://download.racket-lang.org/all-versions.html'
   name 'Racket'
   homepage 'https://racket-lang.org/'
-  license :oss
 
   suite "Racket v#{version}"
   binary "#{appdir}/Racket v#{version}/bin/drracket"

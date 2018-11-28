@@ -1,11 +1,11 @@
 cask 'macmoney' do
-  version '3.7.3'
-  sha256 'ecd89e3f8f266c9dc005020471c84032f0061d003a8e447a481505bfe487ffa5'
+  version '3.8.3'
+  sha256 'd62724e09370f213930ec7e375e7e037da4014ec10e5b15bb37e50f364d7bb17'
 
-  url "http://www.devon.riceball.net/downloads/macmoney#{version.no_dots}.zip"
+  url "https://www.devon.riceball.net/downloads/MacMoney_#{version}.dmg"
+  appcast 'https://www.devon.riceball.net/display.php?file=m01_dl'
   name 'MacMoney'
-  homepage 'http://www.devon.riceball.net/display.php?file=m01'
-  license :commercial
+  homepage 'https://www.devon.riceball.net/display.php?file=m01'
 
   app 'MacMoney.app'
 end

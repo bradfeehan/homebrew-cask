@@ -1,25 +1,20 @@
 cask 'soulver' do
-  version '2.6.0-5456'
-  sha256 '1ba18b3be8835e916a19a840fa7136d0ba9dd4d339c72b05a65ee1862a5c3d51'
+  version '2.6.8-5949'
+  sha256 '216110f8118783194fb80f30e7a63584308f6569e3ff3214d13026231130ab7a'
 
-  url "http://www.acqualia.com/files/sparkle/soulver_#{version}.zip"
-  appcast 'http://www.acqualia.com/soulver/appcast/soulver2.xml',
-          checkpoint: '1e355d3d72aeafce49717901df0986926ed78d0f4201416964d91b72200c2f33'
+  url "https://www.acqualia.com/files/sparkle/soulver_#{version}.zip"
+  appcast "https://www.acqualia.com/soulver/appcast/soulver#{version.major}.xml"
   name 'Soulver'
-  homepage 'http://www.acqualia.com/soulver/'
-  license :commercial
+  homepage 'https://www.acqualia.com/soulver/'
+
+  auto_updates true
+  depends_on macos: '>= :yosemite'
 
   app 'Soulver.app'
 
-  postflight do
-    suppress_move_to_applications
-  end
-
-  zap delete: [
-                '~/Library/Application Support/Soulver',
-                '~/Library/Preferences/com.acqualia.soulver.plist',
-                '~/Library/Autosave Information/Unsaved Soulver Document.soulver',
-                # TODO: glob/expand support
-                # '~/Library/Autosave Information/Unsaved Soulver Document 2.soulver',
-              ]
+  zap trash: [
+               '~/Library/Application Support/Soulver',
+               '~/Library/Preferences/com.acqualia.soulver.plist',
+               '~/Library/Autosave Information/Unsaved Soulver Document*',
+             ]
 end

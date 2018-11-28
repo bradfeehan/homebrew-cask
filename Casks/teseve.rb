@@ -4,18 +4,16 @@ cask 'teseve' do
 
   # github.com/teseve/teseve was verified as official when first introduced to the cask
   url "https://github.com/teseve/teseve/releases/download/#{version}/Teseve-#{version}-mac-x64.zip"
-  appcast 'https://github.com/teseve/teseve/releases.atom',
-          checkpoint: '23472e9f0783ef2271a383cb743e7af2d5253225510c84d83a8408bbb25ccf42'
+  appcast 'https://github.com/teseve/teseve/releases.atom'
   name 'Tèsèvè'
   homepage 'https://teseve.github.io/'
-  license :public_domain
 
   auto_updates true
 
   app 'Teseve.app'
 
-  zap delete: [
-                '~/Library/Preferences/com.flatland.app.teseve.plist',
-                '~/Library/Application Support/teseve',
-              ]
+  zap trash: [
+               '~/Library/Preferences/com.flatland.app.teseve.plist',
+               '~/Library/Application Support/teseve',
+             ]
 end

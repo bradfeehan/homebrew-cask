@@ -1,14 +1,12 @@
 cask 'weka' do
-  version '3.8.0'
-  sha256 '9d47fa04ff3b7d6ebc18ab79ee7da76cbbdabe2bf26f003d08317ae225fc3249'
+  version '3.8.3'
+  sha256 'f13fdbaa34969722138308afc40951b8c741e51a4ce01823b1a7c9a08a779dab'
 
   # sourceforge.net/weka was verified as official when first introduced to the cask
   url "https://downloads.sourceforge.net/weka/weka-#{version.dots_to_hyphens}-oracle-jvm.dmg"
-  appcast 'https://sourceforge.net/projects/weka/rss',
-          checkpoint: '63dc078aa81e58784909f2dd679e41b752c65403bea64221175ca73532190591'
+  appcast 'https://sourceforge.net/projects/weka/rss'
   name 'Weka'
-  homepage 'http://www.cs.waikato.ac.nz/ml/weka/'
-  license :gpl
+  homepage 'https://www.cs.waikato.ac.nz/ml/weka/'
 
   app "weka-#{version.dots_to_hyphens}-oracle-jvm.app"
 end

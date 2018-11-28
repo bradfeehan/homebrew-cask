@@ -1,31 +1,24 @@
 cask 'ivpn' do
-  version '7.4.3'
-  sha256 '4c8ed0b22e13ae23c0afd1307c690d9bb60011b5336c6b1eb5a2a42371f3b7e0'
+  version '2.7.9'
+  sha256 '851699211cbd7b76f9b6be61e0482f7b440b757fe61b8792a35b2bb8937c21ab'
 
-  url "https://macserve.org.uk/downloads/ivpn/iVPN_#{version}.zip"
-  appcast 'http://macserve.org.uk:8090/profileInfo.php',
-          checkpoint: 'ef5a831947d62a9c82baa03e50e1044ef065f4bc80e30fd35c543f0eb6087414'
-  name 'iVPN'
-  homepage 'https://macserve.org.uk/projects/ivpn/'
-  license :commercial
+  url "https://www.ivpn.net/releases/osx/IVPN-#{version}.dmg"
+  appcast 'https://www.ivpn.net/updates/mac/sparkle/ivpn_mac_appcast.xml'
+  name 'IVPN'
+  homepage 'https://www.ivpn.net/apps-macos'
 
-  app 'iVPN.app'
+  app 'IVPN.app'
 
-  uninstall quit:      [
-                         'com.MacServe.iVPN',
-                         'com.MacServe.iVPN-Monitor',
+  uninstall_preflight do
+    set_ownership "#{appdir}/IVPN.app"
+  end
+
+  uninstall delete:    [
+                         '/Library/Application Support/IVPN',
+                         '/Library/PrivilegedHelperTools/net.ivpn.client.Helper',
                        ],
-            launchctl: [
-                         'com.MacServe.ivpnHelper',
-                         'com.macserve.ivpn',
-                         'com.macserve.ppp.l2tp',
-                         'com.macserve.ppp.pptp',
-                       ]
+            launchctl: 'net.ivpn.client.Helper',
+            quit:      'net.ivpn.client.IVPN'
 
-  zap       delete: [
-                      '~/Library/Preferences/com.MacServe.iVPN.plist',
-                      '/Library/LaunchDaemons/com.macserve.ppp.l2tp.plist',
-                      '/Library/LaunchDaemons/com.macserve.ppp.pptp.plist',
-                      '/private/etc/ppp/',
-                    ]
+  zap trash: '~/Library/Preferences/net.ivpn.client.IVPN.plist'
 end

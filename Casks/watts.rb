@@ -1,12 +1,11 @@
 cask 'watts' do
-  version '1.3.3'
-  sha256 '706802ac56b523086d405cc56c5101f93b5ae886f6522775f66e9c6969b98331'
+  version '2.0.6'
+  sha256 '572116d2cdd94f8abe0ed02e0fef067a62dbe0d8317690a4bb834b07eeed8db5'
 
-  # matchingbrackets.com/abatt was verified as official when first introduced to the cask
-  url 'http://www.matchingbrackets.com/abatt/customer/Watts-48.dmg'
+  url 'https://binarytricks.com/watts2/public/Watts.app.tgz'
+  appcast 'https://binarytricks.com/watts2/public/watts2appcast.xml'
   name 'Watts'
-  homepage 'http://binarytricks.com/'
-  license :commercial
+  homepage 'https://binarytricks.com/'
 
   app 'Watts.app'
 end

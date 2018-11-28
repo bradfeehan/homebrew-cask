@@ -1,11 +1,11 @@
 cask 'silo' do
-  version '2.3.02'
-  sha256 '7d84001382c3d12ad2f436fdb5572a60335a9e1dbac6505fd959fc776efaf365'
+  version '2.5.6b'
+  sha256 'e50cbcf455906504fce52b3f2086145effa1395841122d2aefe8ea756f9f00fb'
 
-  url "https://nevercenter.com/download/Install_Silo_#{version.dots_to_underscores}_mac.zip"
+  url "https://nevercenter.com/silo/download_file/filearchive/Install_Silo_#{version.dots_to_underscores}_mac.dmg"
+  appcast 'https://nevercenter.com/silo/release_notes/'
   name 'Silo'
   homepage 'https://nevercenter.com/silo/'
-  license :commercial
 
-  app "Silo #{version.sub(%r{^(\d+\.\d+).*}, '\1')}.app"
+  app "Silo #{version.major}.app"
 end

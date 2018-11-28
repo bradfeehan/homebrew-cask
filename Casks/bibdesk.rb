@@ -1,18 +1,22 @@
 cask 'bibdesk' do
-  version '1.6.7'
-  sha256 'f9ba3a663f907d03326bcfa1741827ae4b639459020b5f3da14b5b17eb6562d6'
+  version '1.6.18'
+  sha256 'c3a661dad393ec8fd6d115851f7c3d8e470819b51c420a0f1ea35e62b7ad1578'
 
+  # downloads.sourceforge.net/bibdesk was verified as official when first introduced to the cask
   url "https://downloads.sourceforge.net/bibdesk/BibDesk/BibDesk-#{version}/BibDesk-#{version}.dmg"
-  appcast 'http://bibdesk.sourceforge.net/bibdesk.xml',
-          checkpoint: '618bbe4ed7f37c05ec1e67fc4fc14b1feef2e63d8ba8ca7c6440715b662f59ff'
+  appcast 'https://bibdesk.sourceforge.io/bibdesk.xml'
   name 'BibDesk'
-  homepage 'http://bibdesk.sourceforge.net/'
-  license :bsd
+  homepage 'https://bibdesk.sourceforge.io/'
+
+  auto_updates true
 
   app 'BibDesk.app'
 
-  zap delete: [
-                '~/Library/Preferences/edu.ucsd.cs.mmccrack.bibdesk.plist',
-                '~/Library/Application Support/BibDesk',
-              ]
+  zap trash: [
+               '~/Library/Application Support/BibDesk',
+               '~/Library/Caches/com.apple.helpd/SDMHelpData/Other/English/HelpSDMIndexFile/edu.ucsd.cs.mmccrack.bibdesk.help*',
+               '~/Library/Caches/edu.ucsd.cs.mmccrack.bibdesk',
+               '~/Library/Cookies/edu.ucsd.cs.mmccrack.bibdesk.binarycookies',
+               '~/Library/Preferences/edu.ucsd.cs.mmccrack.bibdesk.plist',
+             ]
 end

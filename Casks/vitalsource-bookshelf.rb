@@ -1,19 +1,14 @@
 cask 'vitalsource-bookshelf' do
-  if MacOS.version <= :lion
-    version '6.5.2'
-    sha256 'bf5873bb39ff76421a55c9ab769007bb1af64b21dabf6630a4087bbc29c27d55'
-    url "http://downloads.vitalbook.com/vsti/bookshelf/#{version}/MAC/Bookshelf/VitalSource_Bookshelf_#{version}.zip"
-  else
-    version '6.8'
-    sha256 '01153395bb01f79cf11bc5091568c35b3d5de6a0725254bce8b39e0b57a5b031'
-    url "http://downloads.vitalbook.com/vsti/bookshelf/#{version}/MAC/BOOKSHELF/VitalSource_Bookshelf_#{version}.zip"
-  end
+  version '8.0'
+  sha256 '954a6152a74ca9b86b70c1a30ead067a706721b6b833dfb7e5d49569e68b9086'
 
-  appcast 'https://services.vitalbook.com/version/check',
-          checkpoint: 'a310b400eadb9aabc7bcf12e5e56ee2dd80d595288a380d8d2a572b242016bb8'
+  # downloads.vitalbook.com/vsti/bookshelf was verified as official when first introduced to the cask
+  url "https://downloads.vitalbook.com/vsti/bookshelf/#{version}/MAC/Bookshelf/VitalSource-Bookshelf.dmg"
+  appcast 'https://rink.hockeyapp.net/api/2/apps/ed52bc178e094f39a32f4aaa99ad71c2'
   name 'VitalSource Bookshelf'
   homepage 'https://www.vitalsource.com/bookshelf-features'
-  license :freemium
+
+  depends_on macos: '>= :yosemite'
 
   app 'VitalSource Bookshelf.app'
 end

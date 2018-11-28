@@ -1,13 +1,10 @@
 cask 'supersync' do
-  version '6.1.1'
-  sha256 '43ca3fa8eebdba63bf9b8f2c17d26f0847e0ae55c114312f606240cbbbf88ce4'
+  version '6.2'
+  sha256 'c3a271d17e34c0542d30ca3558e17f40063d406ecb8248e5168e554113e59e89'
 
   url "https://supersync.com/downloads/SuperSync_#{version}.dmg"
   name 'SuperSync'
   homepage 'https://supersync.com/'
-  license :commercial
-
-  depends_on arch: :intel
 
   app 'SuperSync.app'
 end

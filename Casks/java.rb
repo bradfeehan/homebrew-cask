@@ -1,84 +1,32 @@
 cask 'java' do
-  version '1.8.0_102-b14'
-  sha256 '9f53b71af203502da4ff416b5ab1a217a655006786bcbb8f8d8ad501debda748'
+  version '11.0.1,13'
+  sha256 'fa07eee08fa0f3de541ee1770de0cdca2ae3876f3bd78c329f27e85c287cd070'
 
-  url "http://download.oracle.com/otn-pub/java/jdk/#{version.sub(%r{^\d+\.(\d+).*?_(.*)$}, '\1u\2')}/jdk-#{version.sub(%r{^\d+\.(\d+).*?_(\d+)-.*$}, '\1u\2')}-macosx-x64.dmg",
-      cookies: {
-                 'oraclelicense' => 'accept-securebackup-cookie',
-               }
-  name 'Java Standard Edition Development Kit'
-  homepage "https://www.oracle.com/technetwork/java/javase/downloads/jdk#{version.split('.')[1]}-downloads-2133151.html"
-  license :gratis
-
-  pkg "JDK #{version.split('.')[1]} Update #{version.sub(%r{^.*?_(\d+)-.*$}, '\1')}.pkg"
+  url "https://download.java.net/java/GA/jdk#{version.major}/#{version.after_comma}/GPL/openjdk-#{version.before_comma}_osx-x64_bin.tar.gz"
+  name 'OpenJDK'
+  homepage 'https://jdk.java.net/'
 
   postflight do
-    system '/usr/bin/sudo', '-E', '--',
-           '/usr/libexec/PlistBuddy', '-c', 'Add :JavaVM:JVMCapabilities: string BundledApp', "/Library/Java/JavaVirtualMachines/jdk#{version.split('-')[0]}.jdk/Contents/Info.plist"
-    system '/usr/bin/sudo', '-E', '--',
-           '/usr/libexec/PlistBuddy', '-c', 'Add :JavaVM:JVMCapabilities: string JNI',        "/Library/Java/JavaVirtualMachines/jdk#{version.split('-')[0]}.jdk/Contents/Info.plist"
-    system '/usr/bin/sudo', '-E', '--',
-           '/usr/libexec/PlistBuddy', '-c', 'Add :JavaVM:JVMCapabilities: string WebStart',   "/Library/Java/JavaVirtualMachines/jdk#{version.split('-')[0]}.jdk/Contents/Info.plist"
-    system '/usr/bin/sudo', '-E', '--',
-           '/usr/libexec/PlistBuddy', '-c', 'Add :JavaVM:JVMCapabilities: string Applets',    "/Library/Java/JavaVirtualMachines/jdk#{version.split('-')[0]}.jdk/Contents/Info.plist"
-    system '/usr/bin/sudo', '-E', '--',
-           '/bin/ln', '-nsf', '--', "/Library/Java/JavaVirtualMachines/jdk#{version.split('-')[0]}.jdk/Contents/Home", '/Library/Java/Home'
-    system '/usr/bin/sudo', '-E', '--',
-           '/bin/mkdir', '-p', '--', "/Library/Java/JavaVirtualMachines/jdk#{version.split('-')[0]}.jdk/Contents/Home/bundle/Libraries"
-    system '/usr/bin/sudo', '-E', '--',
-           '/bin/ln', '-nsf', '--', "/Library/Java/JavaVirtualMachines/jdk#{version.split('-')[0]}.jdk/Contents/Home/jre/lib/server/libjvm.dylib", "/Library/Java/JavaVirtualMachines/jdk#{version.split('-')[0]}.jdk/Contents/Home/bundle/Libraries/libserver.dylib"
-    if MacOS.version <= :mavericks
-      system '/usr/bin/sudo', '-E', '--',
-             '/bin/rm', '-rf', '--', '/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK'
-      system '/usr/bin/sudo', '-E', '--',
-             '/bin/ln', '-nsf', '--', "/Library/Java/JavaVirtualMachines/jdk#{version.split('-')[0]}.jdk/Contents", '/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK'
-    end
+    system_command '/bin/mv',
+                   args: [
+                           '-f', '--',
+                           "#{staged_path}/jdk-#{version.before_comma}.jdk",
+                           "/Library/Java/JavaVirtualMachines/openjdk-#{version.before_comma}.jdk"
+                         ],
+                   sudo: true
+
+    system_command '/bin/mkdir',
+                   args: ['-p', '--', "/Library/Java/JavaVirtualMachines/openjdk-#{version.before_comma}.jdk/Contents/Home/bundle/Libraries"],
+                   sudo: true
+
+    system_command '/bin/ln',
+                   args: [
+                           '-nsf', '--',
+                           "/Library/Java/JavaVirtualMachines/openjdk-#{version.before_comma}.jdk/Contents/Home/lib/server/libjvm.dylib",
+                           "/Library/Java/JavaVirtualMachines/openjdk-#{version.before_comma}.jdk/Contents/Home/bundle/Libraries/libserver.dylib"
+                         ],
+                   sudo: true
   end
 
-  uninstall pkgutil:   [
-                         "com.oracle.jdk#{version.sub(%r{^\d+\.(\d+).*?_(\d+)-.*$}, '\1u\2')}",
-                         'com.oracle.jre',
-                       ],
-            launchctl: [
-                         'com.oracle.java.Helper-Tool',
-                         'com.oracle.java.Java-Updater',
-                       ],
-            quit:      [
-                         'com.oracle.java.Java-Updater',
-                         'net.java.openjdk.cmd', # Java Control Panel
-                       ],
-            delete:    [
-                         '/Library/Internet Plug-Ins/JavaAppletPlugin.plugin',
-                         "/Library/Java/JavaVirtualMachines/jdk#{version.split('-')[0]}.jdk/Contents",
-                         '/Library/PreferencePanes/JavaControlPanel.prefPane',
-                         '/Library/Java/Home',
-                         if MacOS.version <= :mavericks
-                           [
-                             '/usr/lib/java/libjdns_sd.jnilib',
-                             '/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK',
-                           ]
-                         end,
-                       ].keep_if { |v| !v.nil? }
-
-  zap       delete: [
-                      '~/Library/Application Support/Oracle/Java',
-                      '~/Library/Caches/com.oracle.java.Java-Updater',
-                      '~/Library/Caches/net.java.openjdk.cmd',
-                    ],
-            rmdir:  '~/Library/Application Support/Oracle/'
-
-  caveats <<-EOS.undent
-    This Cask makes minor modifications to the JRE to prevent issues with
-    packaged applications, as discussed here:
-
-      https://bugs.eclipse.org/bugs/show_bug.cgi?id=411361
-
-    If your Java application still asks for JRE installation, you might need
-    to reboot or logout/login.
-
-    Installing this Cask means you have AGREED to the Oracle Binary Code
-    License Agreement for Java SE at
-
-      https://www.oracle.com/technetwork/java/javase/terms/license/index.html
-  EOS
+  uninstall delete: "/Library/Java/JavaVirtualMachines/openjdk-#{version.before_comma}.jdk"
 end

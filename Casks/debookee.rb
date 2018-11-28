@@ -1,13 +1,27 @@
 cask 'debookee' do
-  version '5.2.1'
-  sha256 '03ff1dd7bc3f52facc31ae436b9974524b627cf3fe8e4938dc5de2a63db88e56'
+  version '6.3.0'
+  sha256 'e87cc30b09ac069acd3f41b6b73cfbb446afeb89024298d2a62d7f8cb9c8feed'
 
+  # iwaxx.com/debookee was verified as official when first introduced to the cask
   url 'https://www.iwaxx.com/debookee/debookee.zip'
-  appcast 'https://www.iwaxx.com/debookee/appcast.php',
-          checkpoint: '281a8310d97ab8c227ac534f6b98d47c27a9aee506ca166298d0d8f0a05b3eb4'
+  appcast 'https://www.iwaxx.com/debookee/appcast.php'
   name 'Debookee'
-  homepage 'https://www.iwaxx.com/debookee/'
-  license :commercial
+  homepage 'https://debookee.com/'
 
-  app "Debookee #{version}/Debookee.app"
+  depends_on macos: '>= :sierra'
+
+  app 'Debookee.app'
+
+  uninstall delete:    '/Library/PrivilegedHelperTools/com.iwaxx.Debookee.PacketTool',
+            launchctl: 'com.iwaxx.Debookee.PacketTool'
+
+  zap trash: [
+               '~/Library/Application Support/com.iwaxx.Debookee',
+               '~/Library/Caches/com.iwaxx.Debookee',
+               '~/Library/Cookies/com.iwaxx.Debookee.binarycookies',
+               '~/Library/Logs/Debookee',
+               '~/Library/Preferences/com.iwaxx.Debookee.plist',
+               '~/Library/Saved Application State/com.iwaxx.Debookee.savedState',
+               '~/Library/WebKit/com.iwaxx.Debookee',
+             ]
 end

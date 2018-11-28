@@ -1,19 +1,18 @@
 cask 'microsoft-r-open' do
-  version '3.3.1'
-  sha256 'dd804948450bc68fb81ad2c06da97b5af90008374ed291fdfa7ca9c69a6f1272'
+  version '3.5.1'
+  sha256 '95739c07d4fb90f9a3aef19269dd4939f368457d928328adf5126b30c4229601'
 
-  url "https://mran.microsoft.com/install/mro/#{version}/microsoft-r-open-#{version}.pkg"
+  # mran.blob.core.windows.net was verified as official when first introduced to the cask
+  url "https://mran.blob.core.windows.net/install/mro/#{version}/microsoft-r-open-#{version}.pkg"
   name 'Microsoft R Open'
   name 'MRO'
-  homepage 'https://mran.microsoft.com'
-  license :gpl
+  homepage 'https://mran.microsoft.com/'
 
   pkg "microsoft-r-open-#{version}.pkg"
 
   uninstall pkgutil: [
-                       'com.microsoft.pkg.untitled_package',
-                       'com.microsoft.rservices.mro2',
-                       'com.microsoft.rservices.mro1',
+                       'com.microsoft.pkg.mro-framework',
+                       'com.microsoft.pkg.mro-gui',
                      ],
             delete:  [
                        '/usr/bin/R',
@@ -22,17 +21,13 @@ cask 'microsoft-r-open' do
                        "/Library/Frameworks/R.Framework/Versions/#{version.major_minor}",
                      ]
 
-  zap       delete: [
-                      '~/.R',
-                      '~/.RData',
-                      '~/.Rapp.history',
-                      '~/.Rhistory',
-                      '~/.Rprofile',
-                      '~/Library/R',
-                      '~/Library/Caches/org.R-project.R',
-                    ]
-
-  caveats do
-    files_in_usr_local
-  end
+  zap trash: [
+               '~/.R',
+               '~/.RData',
+               '~/.Rapp.history',
+               '~/.Rhistory',
+               '~/.Rprofile',
+               '~/Library/R',
+               '~/Library/Caches/org.R-project.R',
+             ]
 end

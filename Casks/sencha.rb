@@ -1,15 +1,16 @@
 cask 'sencha' do
-  version '6.2.0.103'
-  sha256 '5203d9d2ae06e6be1fb05a8ce6276ab77cc1bc7295c999b6f97008da0c34efbb'
+  version '6.6.0.13'
+  sha256 'e9afc8c9f9d2eddf4f41d79869c68c3799ab6f237ba80e002d519cfd5a8a52b5'
 
   url "https://cdn.sencha.com/cmd/#{version}/jre/SenchaCmd-#{version}-osx.app.zip"
   name 'Sencha Cmd'
   homepage 'https://www.sencha.com/products/sencha-cmd/'
-  license :freemium
 
-  installer script: "SenchaCmd-#{version}-osx.app/Contents/MacOS/JavaApplicationStub",
-            args:   ['-Djava.awt.headless=true', '-q', '-dir', "/opt/Sencha/Cmd/#{version}"],
-            sudo:   true
+  installer script: {
+                      executable: "SenchaCmd-#{version}-osx.app/Contents/MacOS/JavaApplicationStub",
+                      args:       ['-Djava.awt.headless=true', '-q', '-dir', "/opt/Sencha/Cmd/#{version}"],
+                      sudo:       true,
+                    }
 
   postflight do
     set_ownership '/opt/Sencha'
@@ -22,11 +23,8 @@ cask 'sencha' do
                     }
 
   caveats do
-    <<-EOS.undent
-      Installing this Cask means you have AGREED to the Sencha Cmd License
-
-        https://www.sencha.com/legal/sencha-tools-software-license-agreement/
-
+    license 'https://www.sencha.com/legal/sencha-tools-software-license-agreement/'
+    <<~EOS
       Sencha Cmd appends 1 line to your ~/.bash_profile or ~/.profile file:
 
         export PATH="/opt/Sencha/Cmd:$PATH"

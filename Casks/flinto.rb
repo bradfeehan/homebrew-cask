@@ -1,14 +1,17 @@
 cask 'flinto' do
-  version '1.6.3'
-  sha256 '4bdc7a9bebdc2d0d62ad728a89d65e59db9e5dddfab652cc76a8bd1e810543e5'
+  version '26.1'
+  sha256 '1b0cdcc381ad6e2ba11cfd566dd3119d9476c46b9f6a3a8832d2e14efd36c969'
 
   url "https://www.flinto.com/assets/Flinto-#{version}.dmg"
+  appcast 'https://www.flinto.com/appcast.rss'
   name 'Flinto'
   homepage 'https://www.flinto.com/mac'
-  license :commercial
+
+  depends_on macos: '>= :sierra'
 
   app 'Flinto.app'
 
-  uninstall pkgutil: 'com.flinto.*',
-            delete:  '/Applications/FLinto.app'
+  uninstall pkgutil: 'com.flinto.*'
+
+  zap trash: '~/Library/Application Scripts/com.flinto.Flinto'
 end

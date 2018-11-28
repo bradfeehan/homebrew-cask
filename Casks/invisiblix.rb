@@ -4,11 +4,9 @@ cask 'invisiblix' do
 
   # sourceforge.net/invisiblix was verified as official when first introduced to the cask
   url "https://downloads.sourceforge.net/invisiblix/invisibliX-#{version}.zip"
-  appcast 'https://www.read-write.fr/invisiblix/appcast.xml',
-          checkpoint: 'f4ec5f8c4ef92d17aafde286acd8c3d35058da7e2bce93d2da8ee059dbdea4b6'
+  appcast 'https://www.read-write.fr/invisiblix/appcast.xml'
   name 'invisibliX'
-  homepage 'https://www.read-write.fr/invisiblix/'
-  license :oss
+  homepage 'https://invisiblix.read-write.fr/'
 
   app 'invisibliX.app'
 end

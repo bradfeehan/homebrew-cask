@@ -4,15 +4,15 @@ cask 'riverflow' do
 
   # amazonaws.com/sparkle-appcasts/riverflow was verified as official when first introduced to the cask
   url "https://s3-ap-northeast-1.amazonaws.com/sparkle-appcasts/riverflow/riverflow-#{version}.zip"
+  appcast 'http://questbe.at/riverflow/'
   name 'Riverflow'
   homepage 'http://questbe.at/riverflow/'
-  license :gratis
 
   app 'Riverflow.app'
 
-  zap delete: [
-                '~/Library/Application Support/jp.questbeat.Riverflow',
-                '~/Library/Caches/jp.questbeat.Riverflow',
-                '~/Library/Preferences/jp.questbeat.Riverflow.plist',
-              ]
+  zap trash: [
+               '~/Library/Application Support/jp.questbeat.Riverflow',
+               '~/Library/Caches/jp.questbeat.Riverflow',
+               '~/Library/Preferences/jp.questbeat.Riverflow.plist',
+             ]
 end

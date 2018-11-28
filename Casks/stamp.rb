@@ -1,11 +1,11 @@
 cask 'stamp' do
-  version '4.2.25'
-  sha256 'f8f322fbbcfd542fad37c9721b1438f20f26936e8d41abff675204490b5b1f9d'
+  version '4.10.5'
+  sha256 '9c4076b50cd1bc3593d0351600a95ef9d3c0008eb6e8e698c67ff360b534ffaa'
 
-  url "https://stampapp.io/media/STAMP#{version.no_dots}.dmg"
+  # dzqeytqqx888.cloudfront.net was verified as official when first introduced to the cask
+  url "https://dzqeytqqx888.cloudfront.net/STAMP#{version.no_dots}.dmg"
   name 'Stamp'
-  homepage 'https://stampapp.io'
-  license :closed
+  homepage 'https://freeyourmusic.com/'
 
   app 'STAMP.app'
 end

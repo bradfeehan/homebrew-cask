@@ -1,12 +1,12 @@
 cask 'sonic-visualiser' do
-  version '2.5.0.1'
-  sha256 'f271f685c2198924bb90355b856673cb8c526368aa2ce1251e37b4bab6c1870b'
+  version '3.1.1,2395'
+  sha256 '2b7f09075f00082c28d694f9e1bff9ed04a22bc04b5f0e20e46a7a5f185f149f'
 
   # code.soundsoftware.ac.uk was verified as official when first introduced to the cask
-  url "https://code.soundsoftware.ac.uk/attachments/download/1680/Sonic%20Visualiser-#{version}.dmg"
+  url "https://code.soundsoftware.ac.uk/attachments/download/#{version.after_comma}/Sonic%20Visualiser-#{version.before_comma}.dmg"
+  appcast 'https://code.soundsoftware.ac.uk/projects/sonic-visualiser/repository/raw/CHANGELOG'
   name 'Sonic Visualiser'
-  homepage 'http://www.sonicvisualiser.org/'
-  license :gpl
+  homepage 'https://www.sonicvisualiser.org/'
 
   app 'Sonic Visualiser.app'
 end

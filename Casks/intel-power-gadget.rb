@@ -1,13 +1,15 @@
 cask 'intel-power-gadget' do
-  version '3.0.3'
-  sha256 '93f052f5c1306272fceab7af5740d2837656242ab879436a6ce9e573ed9a274e'
+  version '3.5.5,778485'
+  sha256 'ff2f82e095cdea62393e78e69b0616b1d34a95c4b16960891d91943c7c3b62ec'
 
-  url 'https://software.intel.com/file/501089/download'
+  url "https://software.intel.com/file/#{version.after_comma}/download"
   name 'Intel Power Gadget'
   homepage 'https://software.intel.com/en-us/articles/intel-power-gadget-20'
-  license :gratis
+
+  depends_on macos: '>= :high_sierra'
 
   pkg 'Install Intel Power Gadget.pkg'
 
-  uninstall pkgutil: 'com.intel.pkg.PowerGadget.*'
+  uninstall pkgutil: 'com.intel.pkg.PowerGadget.*',
+            kext:    'EnergyDriver'
 end

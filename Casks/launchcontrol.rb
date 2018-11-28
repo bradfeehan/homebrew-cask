@@ -1,13 +1,21 @@
 cask 'launchcontrol' do
-  version '1.28'
-  sha256 '0f39099d9027dfaf397c9f0d4a7c08626b3df5dc2cf4521864298db0ede48685'
+  version '1.43.5'
+  sha256 '2be52d1c874ad0766bde6613db47c247b48b335decb0f8959bb8d290a6bee151'
 
   url "http://www.soma-zone.com/download/files/LaunchControl_#{version}.tar.bz2"
-  appcast 'http://www.soma-zone.com/LaunchControl/a/appcast.xml',
-          checkpoint: '800e2a324b47874056f3296febe032aed9fe320593fbc12cd5edf08781231adf'
+  appcast 'http://www.soma-zone.com/LaunchControl/a/appcast.xml'
   name 'LaunchControl'
   homepage 'http://www.soma-zone.com/LaunchControl/'
-  license :commercial
+
+  auto_updates true
 
   app 'LaunchControl.app'
+
+  uninstall delete:    '/Library/PrivilegedHelperTools/com.soma-zone.LaunchControl.Helper',
+            launchctl: 'com.soma-zone.LaunchControl.Helper'
+
+  zap trash: [
+               '~/Library/Caches/com.apple.helpd/Generated/com.soma-zone.LaunchControl.help*',
+               '~/Library/Preferences/com.soma-zone.LaunchControl.plist',
+             ]
 end

@@ -1,12 +1,12 @@
 cask 'veracrypt' do
-  version '1.18a'
-  sha256 'b7c6b1a321a5f712b3bce13523c26f2fe7caa7a4062c01e5be9eba4779bd524b'
+  version '1.23'
+  sha256 '8c5ba5e8a19de5a33461f3cd84617140736d7cb38e306d0ac4b1c058940227f3'
 
-  # download-codeplex.sec.s-msft.com/Download/Release?ProjectName=veracrypt was verified as official when first introduced to the cask
-  url 'https://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=veracrypt&DownloadId=1601965&FileTime=131159523657700000&Build=21031'
+  # launchpad.net/veracrypt/trunk was verified as official when first introduced to the cask
+  url "https://launchpad.net/veracrypt/trunk/#{version}/+download/VeraCrypt_#{version}.dmg"
+  appcast 'https://github.com/veracrypt/VeraCrypt/releases.atom'
   name 'VeraCrypt'
-  homepage 'https://veracrypt.codeplex.com/'
-  license :oss
+  homepage 'https://www.veracrypt.fr/'
 
   depends_on cask: 'osxfuse'
 

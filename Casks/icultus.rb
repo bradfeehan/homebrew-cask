@@ -4,11 +4,9 @@ cask 'icultus' do
 
   # github.com/djyde/iCultus was verified as official when first introduced to the cask
   url "https://github.com/djyde/iCultus/releases/download/v#{version}/iCultus-#{version}-darwin-x64.zip"
-  appcast 'https://github.com/djyde/iCultus/releases.atom',
-          checkpoint: '093578d94bc93c0dbbd6fbefd837faaf6824ad516add11ca6acc8b7f81a1fec8'
+  appcast 'https://github.com/djyde/iCultus/releases.atom'
   name 'iCultus'
-  homepage 'https://djyde.github.io/iCultus'
-  license :mit
+  homepage 'https://djyde.github.io/iCultus/'
 
   app 'iCultus.app'
 end

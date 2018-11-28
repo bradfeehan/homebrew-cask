@@ -6,7 +6,8 @@ cask 'retinizer' do
   url "https://sites.google.com/a/mikelpr.com/files/home/Retinizer#{version.no_dots}.zip"
   name 'Retinizer'
   homepage 'http://retinizer.mikelpr.com/'
-  license :gratis
 
   app 'Retinizer.app'
+
+  zap trash: '~/Library/Preferences/com.mikelpr.Retinizer.plist'
 end

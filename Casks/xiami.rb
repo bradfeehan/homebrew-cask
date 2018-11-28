@@ -1,20 +1,23 @@
 cask 'xiami' do
-  version :latest
-  sha256 :no_check
+  version '7.2.0,10161733'
+  sha256 'ef5a09acef0532da035eddc8f27327e50a9b507fe14143eaba5f3e22028acf44'
 
-  url 'http://www.xiami.com/software/download?app=music_mac'
+  # gxiami.alicdn.com/xiami-desktop was verified as official when first introduced to the cask
+  url "https://gxiami.alicdn.com/xiami-desktop/update/XiamiMac-#{version.after_comma}.dmg"
+  appcast 'https://g.alicdn.com/music/desktop-app/XiamiMac.xml'
   name 'Xiami'
+  name '虾米音乐'
   homepage 'https://www.xiami.com/'
-  license :unknown # TODO: change license and remove this comment; ':unknown' is a machine-generated placeholder
 
-  app 'Xiami.app'
+  app '虾米音乐.app'
 
   uninstall quit: 'com.xiami.client'
 
-  zap delete: [
-                '~/Library/Caches/com.xiami.client',
-                '~/Library/Containers/com.xiami.client',
-                '~/Library/Preferences/com.xiami.client.plist',
-                '~/Library/Saved Application State/com.xiami.client.savedState',
-              ]
+  zap trash: [
+               '~/Library/Application Support/XIAMI-MUSIC',
+               '~/Library/Application Support/com.xiami.client',
+               '~/Library/Preferences/com.xiami.client.helper.plist',
+               '~/Library/Preferences/com.xiami.client.plist',
+               '~/Library/Saved Application State/com.xiami.client.savedState',
+             ]
 end

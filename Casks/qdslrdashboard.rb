@@ -1,12 +1,11 @@
 cask 'qdslrdashboard' do
-  version '3.5.1'
-  sha256 '7ac36ad7ce8daefa7bbddfd2b1297537716cc83e5ed0bf5cd369fe388159a9db'
+  version '3.5.6'
+  sha256 '524f40ded6b58ecd9bea138b225532948079efc6ef9635c3dab561bae7cb8a1e'
 
   # files.lrtimelapse.com/dslrdashboard was verified as official when first introduced to the cask
   url "http://files.lrtimelapse.com/dslrdashboard/V#{version}/qDslrDashboard_V#{version}_OSX_x64.dmg"
   name 'qDslrDashboard'
-  homepage 'http://dslrdashboard.info/'
-  license :gratis
+  homepage 'https://dslrdashboard.info/'
 
   app 'qDslrDashboard.app'
 end

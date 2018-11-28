@@ -1,13 +1,12 @@
 cask 'airtame' do
-  version '2.0.4'
-  sha256 '6797ef61cda30e832c5fecd874dd640fbe50ffd82ba4faf5d7b18511adae1dda'
+  version '3.3.1'
+  sha256 '47ad9fb1698d52cb8f8c62865f561579d4686dfddad6a7cdbb47959d53dd3023'
 
-  url "https://us-1-downloads.airtame.com/application/ga/osx_x86/releases/airtame-application_#{version}.dmg"
+  url "https://downloads-cdn.airtame.com/application/ga/osx_x64/releases/airtame-application-#{version}.dmg"
   name 'Airtame'
-  homepage 'https://airtame.com'
-  license :unknown # TODO: change license and remove this comment; ':unknown' is a machine-generated placeholder
+  homepage 'https://airtame.com/'
 
-  auto_updates 'True'
+  auto_updates true
 
   app 'Airtame.app'
 end

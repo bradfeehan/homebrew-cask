@@ -1,14 +1,12 @@
 cask 'projectlibre' do
-  version '1.6.2'
-  sha256 '6136fd390d357ec7f92f56619520ffff7a1255155ee20b25b2df8b96a7208f12'
+  version '1.8.0'
+  sha256 '0132bcf33b7e792ed0693888982b1163e5397c7820329188f0f916b2e0246ec7'
 
   # sourceforge.net/projectlibre was verified as official when first introduced to the cask
-  url "https://downloads.sourceforge.net/projectlibre/ProjectLibre/#{version}/projectlibre-#{version}.dmg"
-  appcast 'https://sourceforge.net/projects/projectlibre/rss?path=/ProjectLibre',
-          checkpoint: '46f531cd85f0e21dd45d51c3516fe1d1b7a575d6b52708b190f969f0e5e4590a'
+  url "https://downloads.sourceforge.net/projectlibre/ProjectLibre/#{version.major_minor}/ProjectLibre-#{version}.dmg"
+  appcast 'https://sourceforge.net/projects/projectlibre/rss?path=/ProjectLibre'
   name 'ProjectLibre'
-  homepage 'http://www.projectlibre.org/'
-  license :oss
+  homepage 'https://www.projectlibre.com/'
 
   app 'ProjectLibre.app'
 end

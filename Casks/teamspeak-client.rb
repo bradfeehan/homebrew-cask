@@ -1,12 +1,12 @@
 cask 'teamspeak-client' do
-  version '3.0.19.4'
-  sha256 '97eb1d74e1e6f287a907abbac5ffea373654d69f74a50ac3132c83665772e68d'
+  version '3.2.3'
+  sha256 'a689ffbd54b14c1a3edf887731cb6b24676ea6d90249cabd7f6e378e1642dafe'
 
   # dl.4players.de/ts was verified as official when first introduced to the cask
-  url "http://dl.4players.de/ts/releases/#{version}/TeamSpeak3-Client-macosx-#{version}.dmg"
+  url "http://dl.4players.de/ts/releases/#{version}/TeamSpeak#{version.major}-Client-macosx-#{version}.dmg"
+  appcast 'https://versions.teamspeak.com/ts3-client-2'
   name 'TeamSpeak Client'
   homepage 'https://www.teamspeak.com/'
-  license :unknown # TODO: change license and remove this comment; ':unknown' is a machine-generated placeholder
 
-  app 'TeamSpeak 3 Client.app'
+  app "TeamSpeak #{version.major} Client.app"
 end

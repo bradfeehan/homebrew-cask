@@ -1,22 +1,22 @@
 cask 'gogs' do
-  version '0.9.48'
-  sha256 '8afbd71fde279e77ed5b16c8a80ef409661ccb3953bf6cc867fbede532686475'
+  version '0.11.66'
+  sha256 'f92e7bb780efd66ba0c714c333ca4c67152f93396644b75750da6bf413b762d5'
 
-  url "https://cdn.gogs.io/gogs_v#{version}_darwin_amd64.zip"
+  # github.com/gogits/gogs was verified as official when first introduced to the cask
+  url "https://github.com/gogits/gogs/releases/download/v#{version}/darwin_amd64.zip"
+  appcast 'https://github.com/gogits/gogs/releases.atom'
   name 'Go Git Service'
-  homepage 'https://gogs.io'
-  license :mit
+  homepage 'https://gogs.io/'
 
-  # shim script (https://github.com/caskroom/homebrew-cask/issues/18809)
+  # shim script (https://github.com/Homebrew/homebrew-cask/issues/18809)
   shimscript = "#{staged_path}/gogs.wrapper.sh"
 
   binary shimscript, target: 'gogs'
 
   preflight do
-    IO.write shimscript, <<-EOS.undent
+    IO.write shimscript, <<~EOS
       #!/bin/sh
       cd '#{staged_path}/gogs' && ./gogs "$@"
     EOS
-    FileUtils.chmod '+x', shimscript
   end
 end

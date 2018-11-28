@@ -1,19 +1,21 @@
 cask '115browser' do
-  version '7.2.3.5'
-  sha256 '7f87490e0a4929bf6bbabf861540cfec0746e809f9b96fce7202146149ec9445'
+  version '8.6.4.5'
+  sha256 '48c226ef862080e88993c9ff6a913a7922822f2ba15423bdce3923b66cf305a0'
 
-  url "http://down.115.com/client/mac/115br_v#{version}.dmg"
+  url "https://down.115.com/client/mac/115br_v#{version}.dmg"
   name '115Browser'
   name '115浏览器'
   homepage 'https://pc.115.com/'
-  license :gratis
+
+  depends_on macos: '>= :mountain_lion'
 
   app '115Browser.app'
 
-  zap delete: [
-                '~/Library/Application Support/115Browser',
-                '~/Library/Caches/115Browser',
-                '~/Library/Preferences/com.115.115browser.plist',
-                '~/Library/Saved Application State/com.115.115browser.savedState',
-              ]
+  zap trash: [
+               '~/Library/Application Support/115Browser',
+               '~/Library/Caches/115Browser',
+               '~/Library/Caches/org.115Browser.115Browser',
+               '~/Library/Preferences/org.115Browser.115Browser.plist',
+               '~/Library/Saved Application State/org.115Browser.115Browser.savedState',
+             ]
 end

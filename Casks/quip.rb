@@ -1,12 +1,12 @@
 cask 'quip' do
-  version '4.7.37'
-  sha256 '28ebb2e6820558cc7f34e07e5f31cfcee1806b42c2235f8e730a9683d0a60430'
+  version '5.3.73'
+  sha256 '9da7f53f6495f62346a4427a0192e78bac6821671452063279d2a33b5c70b64f'
 
   # d2i1pl9gz4hwa7.cloudfront.net was verified as official when first introduced to the cask
   url "https://d2i1pl9gz4hwa7.cloudfront.net/macosx_#{version}.dmg"
+  appcast 'https://api.quip.com/-/sparkle-feed?manual=0'
   name 'Quip'
   homepage 'https://quip.com/'
-  license :gratis
 
   app 'Quip.app'
 end

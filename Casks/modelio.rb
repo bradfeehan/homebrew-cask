@@ -1,13 +1,14 @@
 cask 'modelio' do
-  version '3.4.1,118'
-  sha256 'ad31345e88b287cce90b21cf35ca801bc24befcfb4bd2dfc25a3781e4fc415fb'
+  version '3.8.0'
+  sha256 '4e25a74154ed8514558a581293a5957ba3a312881482d39294faf4947a6d0318'
 
-  url "https://www.modelio.org/modelio-download-archive/doc_download/#{version.after_comma}-modelio-#{version.before_comma.no_dots}-macos-x.html"
+  # sourceforge.net/modeliouml was verified as official when first introduced to the cask
+  url "https://downloads.sourceforge.net/modeliouml/modelio-open-source-#{version}-macosx.cocoa.x86_64.tar.gz"
+  appcast 'https://sourceforge.net/projects/modeliouml/rss'
   name 'Modelio'
   homepage 'https://www.modelio.org/'
-  license :oss
 
-  app "Modelio #{version.major_minor}/modelio.app"
+  app "Modelio #{version.major_minor}.app"
 
-  zap delete: '~/.modelio'
+  zap trash: '~/.modelio'
 end

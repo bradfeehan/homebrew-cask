@@ -1,13 +1,12 @@
 cask 'gisto' do
-  version '0.3.1'
-  sha256 '93df9da2888f1cca3e649ccc30b8c4784e95ad22000c77d684d89363d873cbba'
+  version '1.10.17'
+  sha256 '8c95961fab98b6c7f70e70971597b6ad461884beeea17ea44d03896e797cac2a'
 
-  url "http://download.gistoapp.com/Gisto-#{version}-OSX_x86_64.dmg"
-  appcast 'http://www.gistoapp.com/GistoAppCast.xml',
-          checkpoint: 'c959dc4ada9c64029566aa4b1174818e360df84444da255d9626c2bef41f9cf3'
+  # github.com/Gisto/Gisto was verified as official when first introduced to the cask
+  url "https://github.com/Gisto/Gisto/releases/download/v#{version}/Gisto-#{version}.dmg"
+  appcast 'https://github.com/Gisto/Gisto/releases.atom'
   name 'Gisto'
-  homepage 'http://www.gistoapp.com/'
-  license :mit
+  homepage 'https://www.gistoapp.com/'
 
   app 'Gisto.app'
 end

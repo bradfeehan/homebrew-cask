@@ -3,9 +3,9 @@ cask 'kk7ds-python-runtime' do
   sha256 '5cee8acb941e39f93a4df6a99ed29a14c48da0bc5beb3b31068852b1fad8b009'
 
   url "http://www.d-rats.com/download/OSX_Runtime/KK7DS_Python_Runtime_R#{version.major}.pkg"
+  appcast 'http://www.d-rats.com/download/OSX_Runtime/'
   name 'KK7DS Python Runtime'
   homepage 'http://www.d-rats.com/download/OSX_Runtime/'
-  license :unknown # TODO: change license and remove this comment; ':unknown' is a machine-generated placeholder
 
   pkg "KK7DS_Python_Runtime_R#{version.major}.pkg"
 

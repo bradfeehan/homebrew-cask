@@ -4,11 +4,9 @@ cask 'insertpic' do
 
   # amazonaws.com/insertPic was verified as official when first introduced to the cask
   url "https://s3.amazonaws.com/insertPic/InsertPic_#{version}.zip"
-  appcast 'http://www.getinsertpic.com/app_cast',
-          checkpoint: '9090426919cd45cfa6ae7aef6e3a61130ebda5a9b3a30df55397684235ca9b5c'
+  appcast 'http://www.getinsertpic.com/app_cast'
   name 'InsertPic'
   homepage 'http://www.getinsertpic.com/'
-  license :gratis
 
   app 'InsertPic/InsertPic.app'
 end

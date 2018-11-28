@@ -1,23 +1,17 @@
 cask 'nvalt' do
-  if MacOS.version <= :mavericks
-    version '2.2b111'
-    sha256 'd787ddf92730bb03ba084e72bc6fb5f4fbd42731fa3531476af9eb3ce39e1cd0'
-    # abyss.designheresy.com/nvaltb was verified as official when first introduced to the cask
-    url "http://abyss.designheresy.com/nvaltb/nvalt#{version}.zip"
-  else
-    version '2.2b122'
-    sha256 'be6c4fd34f9023e4b4913bac5e5b6b4a56c75e3a5eba0eaa88a6877a70ccd2fb'
-    url "http://assets.brettterpstra.com/nvALT#{version.delete('b')}.dmg"
-  end
+  version '2.2.8-128'
+  sha256 '85420c2a8d505a580b4aa4f0ef4662f08aa4af6139fb4ed448752b6b6e8fd671'
 
+  # updates.designheresy.com/nvalt was verified as official when first introduced to the cask
+  url "https://updates.designheresy.com/nvalt/nvALT#{version.no_hyphens}.dmg"
+  appcast 'https://updates.designheresy.com/nvalt/updates.xml'
   name 'nvALT'
-  homepage 'http://brettterpstra.com/project/nvalt/'
-  license :bsd
+  homepage 'http://brettterpstra.com/projects/nvalt/'
 
   app 'nvALT.app'
 
-  zap delete: [
-                '~/Library/Preferences/net.elasticthreads.nv.plist',
-                '~/Library/Application Support/Notational Velocity',
-              ]
+  zap trash: [
+               '~/Library/Preferences/net.elasticthreads.nv.plist',
+               '~/Library/Application Support/Notational Velocity',
+             ]
 end

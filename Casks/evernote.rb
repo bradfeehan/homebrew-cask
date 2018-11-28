@@ -1,21 +1,40 @@
 cask 'evernote' do
-  if MacOS.version <= :snow_leopard
-    version '5.5.2'
-    sha256 '06b6da6d74ccab08deabfdd4c9519b9bc7f7ef0f0db2a0e8b0cd72e781f2e0ed'
-    url 'https://cdn1.evernote.com/mac/release/Evernote_402634.dmg'
+  if MacOS.version <= :lion
+    version '6.1.1_452253'
+    sha256 'ad2ad4d426362f8bc6fff205522365cfe9a5bd5f36369fc6c3c8bd7f9dd4e288'
+  elsif MacOS.version <= :mavericks
+    version '6.8_453748'
+    sha256 '53fb93884fbd8f966ef43248dad3a7570ad18eb43fd289ad614ee8cff3a26d33'
+  elsif MacOS.version <= :yosemite
+    version '6.12.3_455520'
+    sha256 'fdda9701f1d8ff56a5e8bcadcf5b04dba66ad7e08511700de4675d20fda2bc71'
+  elsif MacOS.version <= :el_capitan
+    version '7.2.3_456885'
+    sha256 'eb9a92d57ceb54570c009e37fa7657a0fa3ab927a445eef382487a3fdde6bb97'
   else
-    version '6.9.2_454158'
-    sha256 'b0c4be75463acdae6cc5ea629ecda8e0266064dcf6016082a896459cc9d38fec'
-    url "https://cdn1.evernote.com/mac-smd/public/Evernote_RELEASE_#{version}.dmg"
-    appcast 'https://update.evernote.com/public/ENMacSMD/EvernoteMacUpdate.xml',
-            checkpoint: 'b2185ad128355727aadd4a88c3e7bcbc5b15130de566b2f37b5028045885ac58'
+    version '7.6_457297'
+    sha256 '94282640888fdb6b9b1e4ef5e8b0f19a41f231b8bbbf3e94a9a9a31a6b95815a'
   end
 
+  url "https://cdn1.evernote.com/mac-smd/public/Evernote_RELEASE_#{version}.dmg"
+  appcast 'https://update.evernote.com/public/ENMacSMD/EvernoteMacUpdate.xml'
   name 'Evernote'
   homepage 'https://evernote.com/'
-  license :gratis
 
   auto_updates true
 
   app 'Evernote.app'
+
+  uninstall quit: [
+                    'com.evernote.Evernote',
+                    'com.evernote.EvernoteHelper',
+                  ]
+
+  zap trash: [
+               '~/Library/Application Support/com.evernote.Evernote',
+               '~/Library/Application Support/com.evernote.EvernoteHelper',
+               '~/Library/Caches/com.evernote.Evernote',
+               '~/Library/Preferences/com.evernote.Evernote.plist',
+               '~/Library/Preferences/com.evernote.EvernoteHelper.plist',
+             ]
 end

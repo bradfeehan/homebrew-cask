@@ -1,16 +1,29 @@
 cask 'gog-galaxy' do
-  version '1.1.17.3'
-  sha256 '1f60334cc0774943ac44ee3d35e05473034934868e9992a4065151ed5d35a557'
+  version '1.2.47.58'
+  sha256 '61a3f67069dec2ec721f6506fe0ef86611f8f3d30a66dde50e9d530a31d23979'
 
   url "https://cdn.gog.com/open/galaxy/client/galaxy_client_#{version}.pkg"
   name 'GOG Galaxy Client'
   homepage 'https://www.gog.com/galaxy'
-  license :gratis
 
+  auto_updates true
   depends_on macos: '>= :mountain_lion'
 
   pkg "galaxy_client_#{version}.pkg"
 
-  uninstall pkgutil: "com.gog.galaxy.galaxy_client_#{version}.pkg",
-            delete:  '/Applications/GalaxyClient.app'
+  uninstall delete:    '/Applications/GOG Galaxy.app',
+            launchctl: [
+                         'com.gog.galaxy.ClientService',
+                         'com.gog.galaxy.commservice',
+                       ]
+
+  zap trash: [
+               '/Library/LaunchDaemons/com.gog.galaxy.ClientService.plist',
+               '/Library/PrivilegedHelperTools/com.gog.galaxy.ClientService',
+               '/Users/Shared/GOG.com',
+               '~/Library/Application Support/GOG.com',
+               '~/Library/Preferences/com.gog.galaxy.cef.renderer.plist',
+               '~/Library/Preferences/com.gog.galaxy.plist',
+               '~/Library/Saved Application State/com.gog.galaxy.savedState',
+             ]
 end

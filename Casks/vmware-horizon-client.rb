@@ -1,11 +1,10 @@
 cask 'vmware-horizon-client' do
-  version '4.2.0-4336768'
-  sha256 '1680232b2422a4ae5d381be8acb954050f6abcc3de14fb09cc1fcb3a84c4b0d7'
+  version '4.9.0-9503551,CART19FQ3'
+  sha256 '81d85a4ca9ca744399cce2a8c933635ffa4c89dcfb2ed5efe607c92497f5b56b'
 
-  url "https://download3.vmware.com/software/view/viewclients/CART16Q3/VMware-Horizon-Client-#{version}.dmg"
+  url "https://download3.vmware.com/software/view/viewclients/#{version.after_comma}/VMware-Horizon-Client-#{version.before_comma}.dmg"
   name 'VMware Horizon Client'
   homepage 'https://www.vmware.com/'
-  license :gratis
 
   app 'VMware Horizon Client.app'
 end

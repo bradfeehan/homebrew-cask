@@ -1,13 +1,13 @@
 cask 'fcs-remover' do
-  version '3.1.3.0'
-  sha256 'ba639f9e3286a7b173cf900cf2aba07f27e64706ac4aa2443b42389ca09e0014'
+  version '3.1.5.0'
+  sha256 'c0d0526f3d7a9b48ae130cda6faed3f3393ea1c08a78850c9f71efa6e04b5e91'
 
   url "https://www.digitalrebellion.com/download/fcsremover?version=#{version.no_dots}"
+  appcast 'https://www.digitalrebellion.com/rss/appcasts/fcs_remover_appcast.xml'
   name 'FCS Remover'
   homepage 'https://www.digitalrebellion.com/fcsremover/'
-  license :gratis
 
   app 'FCS Remover.app'
 
-  zap delete: '~/Library/Preferences/com.digitalrebellion.FCSRemover.plist'
+  zap trash: '~/Library/Preferences/com.digitalrebellion.FCSRemover.plist'
 end

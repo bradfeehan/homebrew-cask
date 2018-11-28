@@ -1,14 +1,14 @@
 cask 'wesnoth' do
-  version '1.12.4'
-  sha256 '1773d6d6441e121ed8e1a219acaa6cf0c7b24aefe58c5253fc71a16a165e350b'
+  version '1.14.5'
+  sha256 'df4b728c896e0927f5e1caa0fb07da701830205f1c01682b90ac14927019a965'
 
   # sourceforge.net/wesnoth was verified as official when first introduced to the cask
   url "https://downloads.sourceforge.net/wesnoth/Wesnoth_#{version}.dmg"
-  appcast 'https://sourceforge.net/projects/wesnoth/rss',
-          checkpoint: '3cefc3332267dc68bd9fb487ddb6a436360dc0d259507082a1fcba9ad94d3704'
+  appcast 'https://sourceforge.net/projects/wesnoth/rss'
   name 'The Battle for Wesnoth'
   homepage 'https://wesnoth.org/'
-  license :gpl
+
+  depends_on macos: '>= :mountain_lion'
 
   app 'Wesnoth.app'
 end

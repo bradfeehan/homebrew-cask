@@ -1,11 +1,11 @@
 cask 'scummvm' do
-  version '1.8.1'
-  sha256 'de493a74e0458401e35cce978d2b5ea5f443b3744931011bd67649be52c6ecf2'
+  version '2.0.0.1'
+  sha256 'ed3e5a040702f78b0b395a801bea83ed2a70ea9fdb71b4bb985ec7084416bd26'
 
-  url "https://scummvm.org/frs/scummvm/#{version}/scummvm-#{version}-macosx.dmg"
+  url "https://scummvm.org/frs/scummvm/#{version.major_minor_patch}/scummvm-#{version}-macosx.dmg"
+  appcast 'https://www.scummvm.org/appcasts/macosx/release.xml'
   name 'ScummVM'
-  homepage 'https://scummvm.org/'
-  license :gpl
+  homepage 'https://www.scummvm.org/'
 
   app 'ScummVM.app'
 end

@@ -1,16 +1,17 @@
 cask 'deezer' do
-  version '1.1.3,4308'
-  sha256 '244530cb29c232c8464660153ddd052d81c7c6e0a6317288544f3225f55d79e5'
+  version '0.16.6'
+  sha256 'd2d727ad7d56416f4f6b703ff4bbed881e6cd7b2b6c9eba6ccf4c3e43a90c387'
 
-  url "http://e-cdn-content.deezer.com/builds/mac/Deezer_#{version.after_comma}.dmg"
+  url "https://www.deezer.com/desktop/download/artifact/darwin/x64/#{version}"
   name 'Deezer'
-  homepage 'https://www.deezer.com/formac'
-  license :gratis
+  homepage 'https://www.deezer.com/download'
+
+  auto_updates true
 
   app 'Deezer.app'
 
-  zap delete: [
-                '~/Library/Application Support/Deezer',
-                '~/Library/Preferences/com.deezer.Deezer.plist',
-              ]
+  zap trash: [
+               '~/Library/Application Support/Deezer',
+               '~/Library/Preferences/com.deezer.Deezer.plist',
+             ]
 end

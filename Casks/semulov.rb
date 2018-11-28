@@ -1,13 +1,11 @@
 cask 'semulov' do
-  version '2.1.1'
-  sha256 'bb3b30387ad6197ad3f158ed9f0ba2da3326d02e4efca12672dbcc78d69dd555'
+  version '2.4.1'
+  sha256 '1b44931b3f2fe06ecab4e47759f67da5487703f06cb51d294c04b013189929d8'
 
   url 'https://www.kainjow.com/downloads/Semulov.zip'
-  appcast 'https://kainjow.com/updates/semulov.xml',
-          checkpoint: '0764186f5017aac6f1adbaf2cdc1732f8038af7cd673909fd612ea9e255adff4'
+  appcast 'https://kainjow.com/updates/semulov.xml'
   name 'Semulov'
-  homepage 'https://www.kainjow.com'
-  license :unknown # TODO: change license and remove this comment; ':unknown' is a machine-generated placeholder
+  homepage 'https://www.kainjow.com/'
 
   app 'Semulov.app'
 end

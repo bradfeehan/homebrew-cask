@@ -1,21 +1,19 @@
 cask 'auganizer' do
-  version '1.1.4'
-  sha256 '9f35899fac64ad4880352998bab05dd33ca693ea6dd51db8d05ba8e0a2a55990'
+  version '2.0'
+  sha256 '0d65dc5d005a10d1a6784ff5d0466f99d71059028b620d38488d4591d35bc260'
 
   url "http://dl.auganizer.com/Auganizer-#{version}.dmg"
-  appcast 'https://www.auganizer.com/updates/aurora.php',
-          checkpoint: 'd0a6bb843bd5b0331764c46ed08b2375142b27313b7810e680c38e3c36ab1837'
+  appcast 'https://www.auganizer.com/updates/aurora.php'
   name 'Auganizer'
   homepage 'https://auganizer.com/'
-  license :commercial
 
   app 'Auganizer.app'
 
-  zap delete: [
-                '~/Library/Application Support/Auganizer',
-                '~/Library/Caches/com.auganizer.aurora',
-                '~/Library/Preferences/com.auganizer.aurora.australis.plist',
-                '~/Library/Preferences/com.auganizer.aurora.plist',
-                '~/Library/Saved Application State/com.auganizer.aurora.savedState',
-              ]
+  zap trash: [
+               '~/Library/Application Support/Auganizer',
+               '~/Library/Caches/com.auganizer.aurora',
+               '~/Library/Preferences/com.auganizer.aurora.australis.plist',
+               '~/Library/Preferences/com.auganizer.aurora.plist',
+               '~/Library/Saved Application State/com.auganizer.aurora.savedState',
+             ]
 end

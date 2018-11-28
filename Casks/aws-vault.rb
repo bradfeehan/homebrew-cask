@@ -1,11 +1,11 @@
 cask 'aws-vault' do
-  version '3.5.0'
-  sha256 '76486ecee4543e1786891e29b8dc9c9eaaf281341821a10fa7a55bd628aafa69'
+  version '4.4.1'
+  sha256 '6c84a00b919629f153ad43a0889cc8f8d67708cfc85cce8bd6e98a57706368b0'
 
   url "https://github.com/99designs/aws-vault/releases/download/v#{version}/aws-vault-darwin-amd64"
+  appcast 'https://github.com/99designs/aws-vault/releases.atom'
   name 'aws-vault'
   homepage 'https://github.com/99designs/aws-vault'
-  license :mit
 
   container type: :naked
 

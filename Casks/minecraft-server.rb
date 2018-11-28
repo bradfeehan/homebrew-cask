@@ -1,39 +1,50 @@
 cask 'minecraft-server' do
-  version '1.10.2'
-  sha256 '195f468227c5f9218f3919538b9b16ba34adced67fc7d7b652c508a5e8d07a21'
+  version '1.13.1,fe123682e9cb30031eae351764f653500b7396c9'
+  sha256 '2ea6047e7651c429228340acd7d1e35f4f6c7af42f59f92b0b1cd476561253d1'
 
-  # s3.amazonaws.com/Minecraft.Download was verified as official when first introduced to the cask
-  url "https://s3.amazonaws.com/Minecraft.Download/versions/#{version}/minecraft_server.#{version}.jar"
+  # launcher.mojang.com was verified as official when first introduced to the cask
+  url "https://launcher.mojang.com/v#{version.major}/objects/#{version.after_comma}/server.jar"
+  appcast 'https://minecraft.net/en-us/download/server/'
   name 'Minecraft Server'
   homepage 'https://minecraft.net/'
-  license :unknown # TODO: change license and remove this comment; ':unknown' is a machine-generated placeholder
 
   container type: :naked
 
-  # shim script (https://github.com/caskroom/homebrew-cask/issues/18809)
+  # shim script (https://github.com/Homebrew/homebrew-cask/issues/18809)
   shimscript = "#{staged_path}/minecraft-server.wrapper.sh"
   binary shimscript, target: 'minecraft-server'
 
+  config_dir = HOMEBREW_PREFIX.join('etc', 'minecraft-server')
+
   preflight do
-    IO.write shimscript, <<-EOS.undent
+    FileUtils.mkdir_p config_dir
+
+    IO.write shimscript, <<~EOS
       #!/bin/sh
-      cd "$(dirname "$(readlink -n $0)")" && \
-        java -Xmx1024M -Xms1024M -jar 'minecraft_server.#{version}.jar' nogui
+      cd '#{config_dir}' && \
+        exec /usr/bin/java -Xmx1024M -Xms1024M -jar '#{staged_path}/server.jar' nogui
     EOS
-    FileUtils.chmod '+x', shimscript
   end
+
+  eula_file = config_dir.join('eula.txt')
 
   postflight do
-    system 'minecraft-server'
-
-    eula_file = "#{staged_path}/eula.txt"
-    IO.write(eula_file, File.read(eula_file).gsub('false', 'TRUE'))
+    system_command shimscript
+    IO.write(eula_file, IO.read(eula_file).sub('eula=false', 'eula=TRUE'))
   end
 
+  uninstall_preflight do
+    FileUtils.rm_f eula_file
+  end
+
+  zap trash: config_dir
+
   caveats do
-    <<-EOS.undent
-      To run this app, type "#{token}" in terminal.
-      To configure the server take a look at the files staged at #{staged_path}
+    depends_on_java
+    <<~EOS
+      Configuration files are located in
+
+        #{config_dir}
     EOS
   end
 end

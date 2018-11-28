@@ -1,13 +1,12 @@
 cask 'chessx' do
-  version '1.4.0'
-  sha256 'cd019f5ad61ea6b7b0488e7a50ffb8012c3f65f11fb0367205e2a342c2eb4d20'
+  version '1.4.6'
+  sha256 '86bdd57667bf73d460fa39b45e1cdcf70fb122aeaed255d18ace79389271864b'
 
+  # downloads.sourceforge.net/chessx was verified as official when first introduced to the cask
   url "https://downloads.sourceforge.net/chessx/chessx/#{version}/chessx-#{version}.dmg"
-  appcast 'https://sourceforge.net/projects/chessx/rss?path=/chessx',
-          checkpoint: '187624a5facb26d8a25469c10df522977b166f22de979bb9d2889efb2619c7c8'
+  appcast 'https://sourceforge.net/projects/chessx/rss?path=/chessx'
   name 'ChessX'
-  homepage 'http://chessx.sourceforge.net/'
-  license :gpl
+  homepage 'https://chessx.sourceforge.io/'
 
   pkg 'chessx-installer.mpkg'
 

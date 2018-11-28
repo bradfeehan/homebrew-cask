@@ -4,11 +4,9 @@ cask 'fugu' do
 
   # sourceforge.net/fugussh was verified as official when first introduced to the cask
   url "https://downloads.sourceforge.net/fugussh/Unstable/fugu-#{version}/Fugu-#{version}.zip"
-  appcast 'https://sourceforge.net/projects/fugussh/rss',
-          checkpoint: '160c21e81d72191ae8c2767e5261bf3f018f555344ddb3e0b4262a31bc7627c1'
+  appcast 'https://sourceforge.net/projects/fugussh/rss'
   name 'Fugu'
   homepage 'http://rsug.itd.umich.edu/software/fugu/'
-  license :bsd
 
   app 'Fugu.app'
 end

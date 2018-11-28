@@ -1,15 +1,24 @@
 cask 'telegram' do
-  version '2.26-51005'
-  sha256 '76f8b4a989534b5720ac665a44242573e5b1e8a00863e20cf69e69dd12a2a6c3'
+  version '4.6.1-143379'
+  sha256 '55277bb8bb78f3e3287d459efa1ed1c0ef9785338c21401a2e23570581873ae2'
 
   url "https://osx.telegram.org/updates/Telegram-#{version}.app.zip"
-  appcast 'https://osx.telegram.org/updates/versions.xml',
-          checkpoint: '77a07fbbe09f33a659ea0ca14d899c14fd88dfd17225c55289d64206090a7883'
+  appcast 'https://osx.telegram.org/updates/versions.xml'
   name 'Telegram for macOS'
-  homepage 'https://macos.telegram.org'
-  license :gpl
+  homepage 'https://macos.telegram.org/'
 
   auto_updates true
+  depends_on macos: '>= :el_capitan'
 
   app 'Telegram.app'
+
+  zap trash: [
+               '~/Library/Application Scripts/ru.keepcoder.Telegram',
+               '~/Library/Application Scripts/ru.keepcoder.Telegram.TelegramShare',
+               '~/Library/Containers/ru.keepcoder.Telegram',
+               '~/Library/Containers/ru.keepcoder.Telegram.TelegramShare',
+               '~/Library/Group Containers/*.ru.keepcoder.Telegram',
+               '~/Library/Preferences/ru.keepcoder.Telegram.plist',
+               '~/Library/Saved Application State/ru.keepcoder.Telegram.savedState',
+             ]
 end

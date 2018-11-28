@@ -1,19 +1,14 @@
 cask 'opentoonz' do
-  version '1.0'
-  sha256 '44832ff14a3c187371ccb7c5ec5825701a7d7a3da302f7a2baf2cf8ca779edb9'
+  version '1.2.1'
+  sha256 'af738c53f4d31d0f524348ac93d82ef8f80508a4908ad2fac98b7d3e473032b5'
 
   # github.com/opentoonz/opentoonz was verified as official when first introduced to the cask
   url "https://github.com/opentoonz/opentoonz/releases/download/v#{version}/OpenToonz.pkg"
-  appcast 'https://github.com/opentoonz/opentoonz/releases.atom',
-          checkpoint: '936a3d648605266c580b1896f6e54d6ad25e6eaa4be1120f465e0576a8ee435b'
+  appcast 'https://github.com/opentoonz/opentoonz/releases.atom'
   name 'OpenToonz'
-  homepage 'https://opentoonz.github.io/'
-  license :oss
+  homepage 'https://opentoonz.github.io/e/index.html'
 
   pkg 'OpenToonz.pkg'
 
-  uninstall pkgutil: [
-                       'io.gothub.opentoonz.bin',
-                       'io.gothub.opentoonz.stuff',
-                     ]
+  uninstall pkgutil: 'io.github.opentoonz'
 end

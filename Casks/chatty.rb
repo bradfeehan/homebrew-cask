@@ -1,14 +1,12 @@
 cask 'chatty' do
-  version '0.8.3'
-  sha256 'e62c3409fd42e76a1c73a4a31076a4169162a566bd4c9e659cc30e31706bbbc6'
+  version '0.9.2'
+  sha256 '574ca8b70e101c3e16a60aac16b407a3334b36dac64181a0ff5ebf9f8467fa11'
 
   # github.com/chatty/chatty was verified as official when first introduced to the cask
   url "https://github.com/chatty/chatty/releases/download/v#{version}/Chatty_#{version}.zip"
-  appcast 'https://github.com/chatty/chatty/releases.atom',
-          checkpoint: '626bce8b501ab9a8e61e3feb9869c9780178e8e873a620b8048454c94915cdee'
+  appcast 'https://github.com/chatty/chatty/releases.atom'
   name 'Chatty'
-  homepage 'https://chatty.github.io'
-  license :mit
+  homepage 'https://chatty.github.io/'
 
   suite 'Chatty'
 
@@ -17,9 +15,9 @@ cask 'chatty' do
     FileUtils.mv(staged_path.children, staged_path.join('Chatty').tap(&:mkpath))
   end
 
-  zap delete: '~/.chatty'
+  zap trash: '~/.chatty'
 
   caveats do
-    depends_on_java('7+')
+    depends_on_java '7+'
   end
 end

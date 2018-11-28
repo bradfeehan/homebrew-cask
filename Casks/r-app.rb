@@ -1,43 +1,32 @@
 cask 'r-app' do
-  if MacOS.version < :mavericks
-    version '3.2.1'
-    sha256 '88b9a20af00a916f3902ccac83098643b95a2801eb4775d38130b26871323a3f'
-    url "https://cloud.r-project.org/bin/macosx/R-#{version}-snowleopard.pkg"
-    pkg "R-#{version}-snowleopard.pkg"
-  else
-    version '3.3.1'
-    sha256 'ecef7e7ee7ee5a43076537b8ef7246e451d6170874e3036a46d5b807cdf7b8de'
-    url "https://cloud.r-project.org/bin/macosx/R-#{version}.pkg"
-    pkg "R-#{version}.pkg"
-  end
+  version '3.5.1'
+  sha256 '5f781220ff2f9374a4db114435fa2d22cfebc353ed8d5246a1f1e162eab75a01'
 
+  url "https://cloud.r-project.org/bin/macosx/R-#{version}.pkg"
+  appcast 'https://www.r-project.org/'
   name 'R'
-  homepage 'https://www.r-project.org'
-  license :gpl
+  homepage 'https://www.r-project.org/'
 
-  depends_on macos: '>= :snow_leopard'
+  depends_on macos: '>= :el_capitan'
 
-  uninstall pkgutil: [
-                       'org.r-project.R.maverics.fw.pkg',
-                       'org.r-project.R.maverics.GUI.pkg',
-                       'org.r-project.x86_64.tcltk.x11',
-                       'org.r-project.x86_64.texinfo',
-                     ],
+  pkg "R-#{version}.pkg"
+
+  uninstall pkgutil: 'org.r-project*',
             delete:  [
                        '/Library/Frameworks/R.Framework',
                        '/usr/bin/R',
                        '/usr/bin/Rscript',
                      ]
 
-  zap       delete: [
-                      '~/.R',
-                      '~/.Rapp.history',
-                      '~/.RData',
-                      '~/.Rhistory',
-                      '~/.Rprofile',
-                      '~/Library/Caches/org.R-project.R',
-                      '~/Library/R',
-                    ]
+  zap trash: [
+               '~/.R',
+               '~/.Rapp.history',
+               '~/.RData',
+               '~/.Rhistory',
+               '~/.Rprofile',
+               '~/Library/R',
+               '~/Library/Caches/org.R-project.R',
+             ]
 
   caveats do
     files_in_usr_local

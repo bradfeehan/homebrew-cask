@@ -1,14 +1,14 @@
 cask 'rocketcake' do
-  version '1.0.4'
-  sha256 '02d3bee08fa83716983561882ec93ade79e7266eefaca7eddc1f0e9e307ed650'
+  version '2.2'
+  sha256 '7e3471911ee2c431560c4c64186c18b616e1630f36c6fd358ce4e1b165ca583e'
 
   # ambiera.at was verified as official when first introduced to the cask
-  url "http://www.ambiera.at/downloads/RocketCake-#{version.major_minor}.dmg"
+  url "https://www.ambiera.at/downloads/RocketCake-#{version.major_minor}.dmg"
+  appcast 'https://www.ambiera.com/rocketcake/download.html'
   name 'RocketCake'
-  homepage 'http://www.ambiera.com/rocketcake/index.html'
-  license :freemium
+  homepage 'https://www.ambiera.com/rocketcake/index.html'
 
   app 'RocketCake.app'
 
-  zap delete: '~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.ambiera.rocketcake.sfl'
+  zap trash: '~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.ambiera.rocketcake.sfl*'
 end

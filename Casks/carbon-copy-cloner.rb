@@ -1,17 +1,27 @@
 cask 'carbon-copy-cloner' do
-  version '4.1.10.4428'
-  sha256 '1c590298b6d226dad891242f36a1af868a31ee36b2703aa9654c9768694d1178'
+  version '5.1.6.5566'
+  sha256 'b3dc6d3ad9a20acc06fa2cb48d36608bfe044c0800d29124a6b36882467e5f22'
 
-  url "https://bombich.com/software/download_ccc_update.php?v=#{version}"
-  appcast "https://bombich.com/software/updates/ccc.php?os_minor=11&os_bugfix=#{version.major}&ccc=#{version.after_comma}&beta=0&locale=en",
-          checkpoint: '1b64d38745f95986b8b0e0bf1b72341cc4a46616bd17226dec102a32b81c3b5a'
+  # bombich.scdn1.secure.raxcdn.com/software/files was verified as official when first introduced to the cask
+  url "https://bombich.scdn1.secure.raxcdn.com/software/files/ccc-#{version}.zip"
+  appcast "https://bombich.com/software/updates/ccc.php?os_major=10&os_minor=14&os_bugfix=0&ccc=#{version.split('.').last}&beta=0"
   name 'Carbon Copy Cloner'
   homepage 'https://bombich.com/'
-  license :commercial
+
+  auto_updates true
 
   app 'Carbon Copy Cloner.app'
 
-  postflight do
-    suppress_move_to_applications
-  end
+  uninstall login_item: 'CCC User Agent',
+            quit:       [
+                          'com.bombich.ccc',
+                          'com.bombich.cccuseragent',
+                        ]
+
+  zap trash: [
+               '~/Library/Application Support/com.bombich.ccc',
+               '~/Library/Caches/com.bombich.ccc',
+               '~/Library/Preferences/com.bombich.ccc.plist',
+               '~/Library/Saved Application State/com.bombich.ccc.savedState',
+             ]
 end

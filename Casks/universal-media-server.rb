@@ -1,14 +1,14 @@
 cask 'universal-media-server' do
-  version '6.5.1'
-  sha256 '72603227d3501093b7483bf8cbb9c25a76418bb3e276a6d480d03b3fc088514c'
+  version '7.6.2'
+  sha256 '0bc55ae873ad9ff7a48a342b5f8afcb7b36dad8ffb435d2af3b8d4c806307e1c'
 
   # sourceforge.net/unimediaserver was verified as official when first introduced to the cask
-  url "https://downloads.sourceforge.net/unimediaserver/Official%20Releases/OS%20X/UMS-#{version}-Java8.dmg"
-  appcast 'https://sourceforge.net/projects/unimediaserver/rss?path=/Official%20Releases',
-          checkpoint: '21be7f27ec7ac545faa851fb7662573af2e47d11aaf33bbe9b33ba3221c95bf4'
+  url "https://downloads.sourceforge.net/unimediaserver/Official%20Releases/OS%20X/UMS-#{version}.dmg"
+  appcast 'https://sourceforge.net/projects/unimediaserver/rss?path=/Official%20Releases'
   name 'Universal Media Server'
-  homepage 'http://universalmediaserver.com'
-  license :gpl
+  homepage 'https://www.universalmediaserver.com/'
 
   app 'Universal Media Server.app'
+
+  zap trash: '~/Library/Application Support/UMS/'
 end

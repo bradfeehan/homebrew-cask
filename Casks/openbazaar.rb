@@ -1,22 +1,21 @@
 cask 'openbazaar' do
-  version '1.1.7'
-  sha256 '790c5303a42fe055f3d4b2cd5af6246ec06ee23395ca001b5365962b63abfd05'
+  version '2.2.5'
+  sha256 'c9a028a571d52b7100b1447073d54a8834dbc219699976b982b4e25f14606496'
 
-  # github.com/OpenBazaar/OpenBazaar-Installer was verified as official when first introduced to the cask
-  url "https://github.com/OpenBazaar/OpenBazaar-Installer/releases/download/v#{version}/OpenBazaar-#{version}.dmg"
-  appcast 'https://github.com/OpenBazaar/OpenBazaar-Installer/releases.atom',
-          checkpoint: '9e386b2fbe4620771a0e8f39fc6b361ae4d539da64fa18cbe46aea4b7acdf27b'
-  name 'OpenBazaar'
-  homepage 'https://openbazaar.org/'
-  license :mit
+  # github.com/OpenBazaar/openbazaar-desktop was verified as official when first introduced to the cask
+  url "https://github.com/OpenBazaar/openbazaar-desktop/releases/download/v#{version}/OpenBazaar#{version.major}-#{version.major_minor_patch}.dmg"
+  appcast 'https://github.com/OpenBazaar/openbazaar-desktop/releases.atom'
+  name "OpenBazaar#{version.major}"
+  homepage 'https://www.openbazaar.org/'
 
-  app 'OpenBazaar.app'
+  app "OpenBazaar#{version.major}.app"
 
-  zap delete: [
-                '~/Library/Application Support/OpenBazaar',
-                '~/Library/Caches/OpenBazaar',
-                '~/Library/Caches/com.electron.openbazaar',
-                '~/Library/Preferences/com.electron.openbazaar.plist',
-                '~/Library/Application Support/com.electron.openbazaar.ShipIt',
-              ]
+  zap trash: [
+               "~/Library/Application Support/OpenBazaar#{version.major_minor}",
+               "~/Library/Caches/com.electron.openbazaar#{version.major}",
+               "~/Library/Caches/com.electron.openbazaar#{version.major}.ShipIt",
+               '~/Library/Caches/com.electron.openbazaar',
+               "~/Library/Preferences/com.electron.openbazaar#{version.major}.helper.plist",
+               '~/Library/Preferences/com.electron.openbazaar.plist',
+             ]
 end

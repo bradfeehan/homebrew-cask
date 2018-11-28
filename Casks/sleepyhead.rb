@@ -5,7 +5,13 @@ cask 'sleepyhead' do
   url "https://sleepyhead.jedimark.net/releases/SleepyHead-#{version.before_comma}-Snapshot-MacOSX-#{version.after_comma}.dmg"
   name 'SleepyHead OpenSource CPAP Review Software'
   homepage 'https://sleepyhead.jedimark.net/'
-  license :gpl
 
   app 'SleepyHead.app'
+
+  zap trash: [
+               '~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/jedimark.sleepyhead.sfl*',
+               '~/Library/Preferences/com.jedimark.SleepyHead-Testing.plist',
+               '~/Library/Preferences/com.jedimark.SleepyHead.plist',
+               '~/Library/Saved Application State/Jedimark.SleepyHead.savedState',
+             ]
 end

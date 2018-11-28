@@ -1,11 +1,12 @@
 cask 'trenchbroom' do
-  version '1.1.6_2759'
-  sha256 '92eeb77b0a4b3be21421120d78e5996ff6d2e3f8c41afac6cbd8185f5798c67a'
+  version '2.0.6'
+  sha256 'd82454c40e90b620e1de5206379b995418287fa5cdc7b8ab169a47676f2a790b'
 
-  url "http://kristianduske.com/trenchbroom/downloads/mac/TrenchBroom_Mac_#{version}.zip"
+  # github.com/kduske/TrenchBroom was verified as official when first introduced to the cask
+  url "https://github.com/kduske/TrenchBroom/releases/download/v#{version}/TrenchBroom-MacOSX-v#{version}-Release.dmg"
+  appcast 'https://github.com/kduske/TrenchBroom/releases.atom'
   name 'TrenchBroom'
   homepage 'http://kristianduske.com/trenchbroom/'
-  license :gpl
 
   app 'TrenchBroom.app'
 end

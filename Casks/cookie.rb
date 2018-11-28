@@ -1,13 +1,19 @@
 cask 'cookie' do
-  version '5.1.2'
-  sha256 '34da97c7fe95add70588c2c08a82535dd7847b72be9160feaaf2da56e2d121d6'
+  version '5.9.2'
+  sha256 'ee55a8178ffc3d93ba4cdd71fabe4b4beef52f09deff8d94b669129c475a6392'
 
-  url "https://sweetpproductions.com/products/cookie#{version.major}/Cookie#{version.major}.zip"
-  appcast "https://sweetpproductions.com/products/cookie#{version.major}/appcast.xml",
-          checkpoint: '4f6e9dddc27f696a6555c24a765fdc9f08992db41083d30a1ed7095043d9d236'
+  url "https://sweetpproductions.com/products/cookie#{version.major}/Cookie#{version.major}.dmg"
+  appcast "https://sweetpproductions.com/products/cookie#{version.major}/appcast.xml"
   name 'Cookie'
   homepage 'https://sweetpproductions.com/'
-  license :commercial
+
+  depends_on macos: '>= :el_capitan'
 
   app 'Cookie.app'
+
+  zap trash: [
+               '~/Library/Application Scripts/com.sweetpproductions.Cookie5',
+               '~/Library/Containers/com.sweetpproductions.Cookie5',
+               '~/Library/Preferences/com.sweetpproductions.Cookie5.plist',
+             ]
 end

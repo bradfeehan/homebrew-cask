@@ -1,15 +1,22 @@
 cask 'wwdc' do
-  version '4.3'
-  sha256 '3d161c65a8a6db77ca011c6e6cbb8235af380f7845f6047ec5e77892854cd884'
+  version '6.0.4'
+  sha256 '195bc704ae7f7d30fb3f3420e143e527ae93bb4d69c6da594c7dc81394a2a160'
 
+  # github.com/insidegui/WWDC was verified as official when first introduced to the cask
   url "https://github.com/insidegui/WWDC/releases/download/#{version}/WWDC_v#{version}.zip"
-  appcast 'https://github.com/insidegui/WWDC/releases.atom',
-          checkpoint: 'fe9ba442bd3968bd4eaa987cf42d345855c2f4a193b1a1f8a62f488f0a4e4234'
+  appcast 'https://github.com/insidegui/WWDC/releases.atom'
   name 'WWDC'
-  homepage 'https://github.com/insidegui/WWDC'
-  license :bsd
+  homepage 'https://wwdc.io/'
 
   auto_updates true
+  depends_on macos: '>= :sierra'
 
   app 'WWDC.app'
+
+  zap trash: [
+               '~/Library/Application Support/io.wwdc.app',
+               '~/Library/Application Support/io.wwdc.app.TranscriptIndexingService',
+               '~/Library/Application Support/WWDC',
+               '~/Library/Preferences/io.wwdc.app.plist',
+             ]
 end

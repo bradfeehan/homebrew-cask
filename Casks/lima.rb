@@ -1,11 +1,11 @@
 cask 'lima' do
-  version '1.2.1'
-  sha256 '6863bdadb85ebfeb96d52d9b695329a0b4e907ac82220ed448be2ce972ec2739'
+  version '1.4.6'
+  sha256 '38a5929b1cf1d503f79cc5738f546f5cd97ffcb6f54e5c9993de39501cc33a61'
 
   url "https://update.api.meetlima.com/downloads/osx/dist/Lima_#{version}.dmg"
+  appcast 'https://update.api.meetlima.com/osx?channel=MASTER'
   name 'Lima'
   homepage 'https://meetlima.com/'
-  license :gratis
 
   app 'Lima.app'
 end

@@ -1,11 +1,11 @@
 cask 'gyazmail' do
-  version '1.5.17'
-  sha256 '44660863538177d323702e2b952a38246dfe3ff82ed3899df0a5162fdd375c96'
+  version '1.5.20'
+  sha256 '162410ec7d57f3dad83102cb53ef0fec8eaa246698bb5963780664744fe3eccb'
 
   url "http://gyazsquare.com/gyazmail/GyazMail-#{version.no_dots}.dmg"
+  appcast 'http://gyazsquare.com/gyazmail/'
   name 'GyazMail'
   homepage 'http://gyazsquare.com/gyazmail/'
-  license :commercial
 
   app 'GyazMail.app'
 end

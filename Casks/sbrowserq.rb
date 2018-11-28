@@ -1,12 +1,10 @@
 cask 'sbrowserq' do
-  version '3.2'
-  sha256 '5b3b45acc9a5c9cc15c129fc8ca3b298a1017426941124ebf5d84180ba78a753'
+  version '3.5'
+  sha256 'd62efea257215b019421f13b947e4dcb161fb35e1694454b140dc70c5f0fef99'
 
-  url "http://park.geocities.jp/sbrowser_q/SbrowserQ_V#{version}_mac.zip"
+  url "http://park.geocities.jp/sbrowser_q/SbrowserQ_V#{version}_mac.dmg"
   name 'SbrowserQ'
   homepage 'http://park.geocities.jp/sbrowser_q/'
-  license :gratis
 
-  app "SbrowserQ_V#{version}_mac/SbrowserQ.app"
-  app "SbrowserQ_V#{version}_mac/SbrowserQ_Bundle_Java8.app"
+  app 'SbrowserQ.app'
 end

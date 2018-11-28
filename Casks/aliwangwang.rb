@@ -1,22 +1,20 @@
 cask 'aliwangwang' do
-  version '7.03.01-7790'
-  sha256 '48f400006987ecb3b9f46eaa3add78a4e22304ff15c684ce637a1c087f08f0bd'
+  version :latest
+  sha256 :no_check
 
-  # dbison.alicdn.com was verified as official when first introduced to the cask
-  url "https://dbison.alicdn.com/updates/macww-nosandbox-#{version}.dmg"
+  url 'https://alimarket.taobao.com/markets/qnww/aliww-download?wh_from=macos'
   name 'Ali Wangwang'
-  homepage 'https://wangwang.taobao.com'
-  license :unknown # TODO: change license and remove this comment; ':unknown' is a machine-generated placeholder
+  homepage 'https://alimarket.taobao.com/markets/qnww/portal-group/ww/index'
 
   app 'AliWangwang.app'
 
   uninstall quit: 'com.taobao.aliwangwang'
 
-  zap delete: [
-                '~/Library/Caches/com.taobao.aliwangwang',
-                '~/Library/Containers/com.taobao.aliwangwang',
-                '~/Library/Internet Plug-Ins/WangwangPlugin.plugin',
-                '~/Library/Preferences/com.taobao.aliwangwang.plist',
-                '~/Library/Saved Application State/com.taobao.aliwangwang.savedState',
-              ]
+  zap trash: [
+               '~/Library/Caches/com.taobao.aliwangwang',
+               '~/Library/Containers/com.taobao.aliwangwang',
+               '~/Library/Internet Plug-Ins/WangwangPlugin.plugin',
+               '~/Library/Preferences/com.taobao.aliwangwang.plist',
+               '~/Library/Saved Application State/com.taobao.aliwangwang.savedState',
+             ]
 end

@@ -6,13 +6,12 @@ cask 'colortester' do
   url 'https://www.alfasado.co.jp/download/ColorTester_Mac.zip'
   name 'ColorTester'
   homepage 'https://alfasado.net/apps/colortester.html'
-  license :gratis
 
   app 'ColorTester/ColorTester.app'
 
-  zap delete: [
-                '~/Library/Preferences/com.alfasado.colortester',
-                '~/Library/Preferences/com.alfasado.colortester.plist',
-                '~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.alfasado.colortester.sfl',
-              ]
+  zap trash: [
+               '~/Library/Preferences/com.alfasado.colortester',
+               '~/Library/Preferences/com.alfasado.colortester.plist',
+               '~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.alfasado.colortester.sfl*',
+             ]
 end

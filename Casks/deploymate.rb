@@ -1,20 +1,18 @@
 cask 'deploymate' do
-  version '1.3.4'
-  sha256 '08842ecba6773b0caba59296b415e7fd8595ba55e8c8bb686bdd11928350c8eb'
+  version '1.3.6'
+  sha256 'c1bf5bdbbb0f3fce95a7afdfb578ff821f1b41c6232f4cf9f4857072159055b8'
 
   # amazonaws.com/deploymate was verified as official when first introduced to the cask
   url "https://s3.amazonaws.com/deploymate/download/Deploymate#{version.no_dots}.zip"
-  appcast 'http://www.deploymateapp.com/deploymate-updates.xml',
-          checkpoint: 'a112f2107f7ed54b36a5a45e20da34d3a07ea19f97b3c925dec5568f8ca64204'
+  appcast 'http://www.deploymateapp.com/deploymate-updates.xml'
   name 'Deploymate'
-  homepage 'http://www.deploymateapp.com'
-  license :commercial
+  homepage 'http://www.deploymateapp.com/'
 
   app 'Deploymate.app'
 
-  zap delete: [
-                '~/Library/Caches/com.ivanvasic.deploymate',
-                '~/Library/Preferences/com.ivanvasic.deploymate.plist',
-                '~/Library/Preferences/com.ivanvasic.deploymate.LSSharedFileList.plist',
-              ]
+  zap trash: [
+               '~/Library/Caches/com.ivanvasic.deploymate',
+               '~/Library/Preferences/com.ivanvasic.deploymate.plist',
+               '~/Library/Preferences/com.ivanvasic.deploymate.LSSharedFileList.plist',
+             ]
 end

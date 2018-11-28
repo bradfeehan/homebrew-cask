@@ -1,43 +1,43 @@
 cask 'wireshark' do
-  version '2.2.1'
-  sha256 '34484020d8888dcfb8559e6ed5b3c4f01686d24a6260a6fbedafa66bffdb45e6'
+  version '2.6.4'
+  sha256 '3c347c3ffdbab2d7a358bb4a231e18ef730eb87175c80db7e2fd61b25e8a6d51'
 
   url "https://www.wireshark.org/download/osx/Wireshark%20#{version}%20Intel%2064.dmg"
+  appcast 'https://www.wireshark.org/download/osx/'
   name 'Wireshark'
   homepage 'https://www.wireshark.org/'
-  license :gpl
+
+  conflicts_with cask: 'wireshark-chmodbpf'
+  depends_on macos: '>= :mountain_lion'
 
   pkg "Wireshark #{version} Intel 64.pkg"
 
-  postflight do
-    if Process.euid.zero?
-      ohai 'Note:'
-      puts <<-EOS.undent
-        You executed 'brew cask' as the superuser.
-
-        You must manually add users to group 'access_bpf' in order to use Wireshark
-      EOS
-    else
-      system '/usr/bin/sudo', '-E', '--',
-             '/usr/sbin/dseditgroup', '-o', 'edit', '-a', Etc.getpwuid(Process.euid).name, '-t', 'user', '--', 'access_bpf'
-    end
+  uninstall_preflight do
+    set_ownership '/Library/Application Support/Wireshark'
   end
 
-  uninstall script:  {
-                       executable: '/usr/sbin/dseditgroup',
-                       args:       ['-o', 'delete', 'access_bpf'],
-                     },
-            pkgutil: 'org.wireshark.*',
-            delete:  [
-                       '/usr/local/bin/capinfos',
-                       '/usr/local/bin/dftest',
-                       '/usr/local/bin/dumpcap',
-                       '/usr/local/bin/editcap',
-                       '/usr/local/bin/mergecap',
-                       '/usr/local/bin/randpkt',
-                       '/usr/local/bin/rawshark',
-                       '/usr/local/bin/text2pcap',
-                       '/usr/local/bin/tshark',
-                       '/usr/local/bin/wireshark',
-                     ]
+  uninstall pkgutil:   'org.wireshark.*',
+            launchctl: 'org.wireshark.ChmodBPF',
+            delete:    [
+                         '/private/etc/manpaths.d/Wireshark',
+                         '/private/etc/paths.d/Wireshark',
+                         '/usr/local/bin/capinfos',
+                         '/usr/local/bin/dftest',
+                         '/usr/local/bin/dumpcap',
+                         '/usr/local/bin/editcap',
+                         '/usr/local/bin/mergecap',
+                         '/usr/local/bin/randpkt',
+                         '/usr/local/bin/rawshark',
+                         '/usr/local/bin/text2pcap',
+                         '/usr/local/bin/tshark',
+                         '/usr/local/bin/wireshark',
+                       ],
+            script:    {
+                         executable:   '/usr/sbin/dseditgroup',
+                         args:         ['-o', 'delete', 'access_bpf'],
+                         must_succeed: false,
+                         sudo:         true,
+                       }
+
+  zap trash: '~/Library/Saved Application State/org.wireshark.Wireshark.savedState'
 end
